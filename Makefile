@@ -2,14 +2,15 @@
 CXX = g++ # use g++ to compile C++
 CXXFLAGS = -Wall -std=c++17
 
-.PHONY: 1
-1:
-	$(CXX) $(CXXFLAGS) 1.cpp -o bai1
-	./bai1
+NUMS := 1 2 3 4 5 6 7 8
+.PHONY: $(NUMS)
+$(NUMS):
+	$(CXX) $(CXXFLAGS) $@.cpp -o $@
+	./$@
 
 # Remove all compiled binaries
 clean:
-	rm -f bai[0-9]*
+	rm -f [0-9]
 
 help:
 	@echo "Usage:"
