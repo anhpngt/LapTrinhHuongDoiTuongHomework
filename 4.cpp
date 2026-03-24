@@ -62,8 +62,10 @@ int main()
          { return a.CompareTo(b) < 0; });
     cout << "Day phan so sap xep tang dan:" << endl;
     for (int i = 0; i < n; i++)
+    {
+        cout << "\t";
         fractions[i].Print();
-
+    }
     // Sort descending
     sort(fractions,
          fractions + n,
@@ -71,7 +73,10 @@ int main()
          { return a.CompareTo(b) > 0; });
     cout << "Day phan so sap xep giam dan:" << endl;
     for (int i = 0; i < n; i++)
+    {
+        cout << "\t";
         fractions[i].Print();
+    }
 
     return 0;
 }
