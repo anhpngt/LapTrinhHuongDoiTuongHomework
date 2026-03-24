@@ -17,5 +17,8 @@ public:
     Fraction(int iNumerator, int iDenominator);
 
     void Print();
-    int CompareTo(Fraction other);
+    Fraction Add(Fraction other);
+    Fraction Subtract(Fraction other);
+    Fraction Multiply(Fraction other);
+    Fraction Divide(Fraction other);
 };

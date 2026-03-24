@@ -5,13 +5,14 @@
 
 #pragma once
 
-class Fraction {
+class Fraction
+{
 private:
     int iNumerator;
     int iDenominator;
 
-    // Reduce the fraction to its simplest form.
     void reduce();
+
 public:
     Fraction(int iNumerator, int iDenominator);
 
