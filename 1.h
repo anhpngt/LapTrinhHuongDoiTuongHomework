@@ -14,4 +14,6 @@ private:
     void reduce();
 public:
     Fraction(int iNumerator, int iDenominator);
+
+    void Print();
 };

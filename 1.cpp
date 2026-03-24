@@ -5,7 +5,7 @@
 
 #include <iostream>
 #include <numeric>
-#include "bai1.h"
+#include "1.h"
 
 using namespace std;
 
@@ -23,27 +23,38 @@ Bai 1: Viết chương trình cho phép người dùng nhập vào một phân s
 và xuất kết quả ra màn hình.
 */
 int main() {
-    cout << "Nhap phan so thu nhat: " << endl;
     Fraction ps1 = inputFraction();
-
-    cout << "Nhap phan so thu hai: " << endl;
-    Fraction ps2 = inputFraction();
+    cout << "Phan so vua nhap: ";
+    ps1.Print();
+    return 0;
 }
 
-// Initialize a new Fraction with the given numerator and denominator.
+/**
+Initialize a new Fraction with the given numerator and denominator.
+
+Note that the constructor will automatically reduce the fraction to its simplest form.*/
 Fraction::Fraction(int iNumerator, int iDenominator) {
     this->iNumerator = iNumerator;
     this->iDenominator = iDenominator;
+    if (this->iDenominator == 0) {
+        throw invalid_argument("Mau so khong duoc bang 0.");
+    }
     reduce();
 }
 
+// Reduce the fraction to its simplest form.
 void Fraction::reduce() {
-    int g = gcd(abs(iNumerator), abs(iDenominator));
-    iNumerator /= g;
-    iDenominator /= g;
+    int g = gcd(abs(this->iNumerator), abs(this->iDenominator));
+    this->iNumerator /= g;
+    this->iDenominator /= g;
     // Keep the sign on the numerator
-    if (iDenominator < 0) {
-        iNumerator = -iNumerator;
-        iDenominator = -iDenominator;
+    if (this->iDenominator < 0) {
+        this->iNumerator = -this->iNumerator;
+        this->iDenominator = -this->iDenominator;
     }
+}
+
+// Print prints the fraction in the form "numerator/denominator".
+void Fraction::Print() {
+    cout << this->iNumerator << "/" << this->iDenominator << endl;
 }

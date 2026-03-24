@@ -1,14 +1,11 @@
 # Compiler and flags
-CXX = g++               # use g++ to compile C++
+CXX = g++ # use g++ to compile C++
 CXXFLAGS = -Wall -std=c++17
 
-# Pattern rule: compile and immediately run
-# e.g. `make bai1` compiles bai1.cpp -> ./bai1, then runs it
-#   $< = the first dependency (bai1.cpp)
-#   $@ = the target name (bai1)
-%: %.cpp
-	$(CXX) $(CXXFLAGS) $< -o $@
-	./$@
+.PHONY: 1
+1:
+	$(CXX) $(CXXFLAGS) 1.cpp -o bai1
+	./bai1
 
 # Remove all compiled binaries
 clean:
