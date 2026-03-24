@@ -3,13 +3,19 @@
 // Ngày sinh: 15/05/1996
 // Lớp: CN1.K2025.2.CNTT
 
+/**
+1: Viết chương trình cho phép người dùng nhập vào một phân số, rút gọn phân số
+và xuất kết quả ra màn hình.
+*/
+
 #include <iostream>
 #include <numeric>
 #include "1.h"
 
 using namespace std;
 
-Fraction inputFraction() {
+Fraction inputFraction()
+{
     int iNumerator, iDenominator;
     cout << "Nhap tu so: ";
     cin >> iNumerator;
@@ -18,11 +24,8 @@ Fraction inputFraction() {
     return Fraction(iNumerator, iDenominator);
 }
 
-/**
-Bai 1: Viết chương trình cho phép người dùng nhập vào một phân số, rút gọn phân số
-và xuất kết quả ra màn hình.
-*/
-int main() {
+int main()
+{
     Fraction ps1 = inputFraction();
     cout << "Phan so vua nhap: ";
     ps1.Print();
@@ -33,28 +36,33 @@ int main() {
 Initialize a new Fraction with the given numerator and denominator.
 
 Note that the constructor will automatically reduce the fraction to its simplest form.*/
-Fraction::Fraction(int iNumerator, int iDenominator) {
+Fraction::Fraction(int iNumerator, int iDenominator)
+{
     this->iNumerator = iNumerator;
     this->iDenominator = iDenominator;
-    if (this->iDenominator == 0) {
+    if (this->iDenominator == 0)
+    {
         throw invalid_argument("Mau so khong duoc bang 0.");
     }
     reduce();
 }
 
 // Reduce the fraction to its simplest form.
-void Fraction::reduce() {
+void Fraction::reduce()
+{
     int g = gcd(abs(this->iNumerator), abs(this->iDenominator));
     this->iNumerator /= g;
     this->iDenominator /= g;
     // Keep the sign on the numerator
-    if (this->iDenominator < 0) {
+    if (this->iDenominator < 0)
+    {
         this->iNumerator = -this->iNumerator;
         this->iDenominator = -this->iDenominator;
     }
 }
 
 // Print prints the fraction in the form "numerator/denominator".
-void Fraction::Print() {
+void Fraction::Print()
+{
     cout << this->iNumerator << "/" << this->iDenominator << endl;
 }
