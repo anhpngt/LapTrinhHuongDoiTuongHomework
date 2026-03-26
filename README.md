@@ -3,7 +3,9 @@
 ## Build & Run
 
 ```bash
-make run1       # compile + run bai1.cpp
+make 1       # compile and run bai 1
+make 2       # compile and run bai 2
+# ... tuong tu cho bai 3-8
 
-make run2
+make clean   # xoa tat ca binary
 ```

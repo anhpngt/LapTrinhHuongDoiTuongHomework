@@ -14,9 +14,8 @@ clean:
 
 help:
 	@echo "Usage:"
-	@echo "  make baiN     - compile and run baiN.cpp"
+	@echo "  make N        - compile and run N.cpp (N = 1..8)"
 	@echo "  make clean    - remove all compiled binaries"
 	@echo ""
-	@echo "Examples:"
-	@echo "  make bai1"
-	@echo "  make bai2"
+	@echo "Example:"
+	@echo "  make 1"
