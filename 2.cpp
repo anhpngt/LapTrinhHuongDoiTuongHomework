@@ -3,10 +3,8 @@
 // Ngày sinh: 15/05/1996
 // Lớp: CN1.K2025.2.CNTT
 
-/**
-2. Viết chương trình cho phép người dùng nhập vào hai phân số, tìm phân số lớn
-nhất và xuất kết quả ra màn hình.
-*/
+// 2. Viết chương trình cho phép người dùng nhập vào hai phân số, tìm phân số lớn
+// nhất và xuất kết quả ra màn hình.
 
 #include <iostream>
 #include <numeric>
@@ -15,7 +13,7 @@ nhất và xuất kết quả ra màn hình.
 using namespace std;
 
 // Helper function to input a fraction from the user.
-Fraction inputFraction()
+Fraction InputFraction()
 {
     int iNumerator, iDenominator;
     cout << "\tNhap tu so: ";
@@ -28,9 +26,9 @@ Fraction inputFraction()
 int main()
 {
     cout << "Nhap phan so thu nhat:" << endl;
-    Fraction f1 = inputFraction();
+    Fraction f1 = InputFraction();
     cout << "Nhap phan so thu hai:" << endl;
-    Fraction f2 = inputFraction();
+    Fraction f2 = InputFraction();
 
     if (f1.CompareTo(f2) > 0)
     {
@@ -54,11 +52,8 @@ int main()
     return 0;
 }
 
-/**
-Initialize a new Fraction with the given numerator and denominator.
-
-Note that the constructor will automatically reduce the fraction to its simplest form.
-*/
+// Initialize a new Fraction with the given numerator and denominator.
+// The constructor will automatically reduce the fraction to its simplest form.
 Fraction::Fraction(int iNumerator, int iDenominator)
 {
     if (iDenominator == 0)
@@ -67,11 +62,11 @@ Fraction::Fraction(int iNumerator, int iDenominator)
     }
     this->iNumerator = iNumerator;
     this->iDenominator = iDenominator;
-    reduce();
+    Reduce();
 }
 
 // Reduce the fraction to its simplest form.
-void Fraction::reduce()
+void Fraction::Reduce()
 {
     int g = gcd(abs(this->iNumerator), abs(this->iDenominator));
     this->iNumerator /= g;

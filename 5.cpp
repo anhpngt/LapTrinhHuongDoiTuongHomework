@@ -3,10 +3,8 @@
 // Ngày sinh: 15/05/1996
 // Lớp: CN1.K2025.2.CNTT
 
-/**
-5. Viết chương trình cho phép người dùng nhập họ tên, điểm toán, điểm văn của
-một học sinh. Tính điểm trung bình và xuất kết quả ra màn hình.
-*/
+// 5. Viết chương trình cho phép người dùng nhập họ tên, điểm toán, điểm văn của
+// một học sinh. Tính điểm trung bình và xuất kết quả ra màn hình.
 
 #include <iostream>
 #include <string>

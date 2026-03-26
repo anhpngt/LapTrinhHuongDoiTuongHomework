@@ -3,10 +3,8 @@
 // Ngày sinh: 15/05/1996
 // Lớp: CN1.K2025.2.CNTT
 
-/**
-8. Viết chương trình cho phép người dùng nhập vào một ngày (ngày tháng năm).
-Xuất ra thứ trong tuần của ngày đó
-*/
+// 8. Viết chương trình cho phép người dùng nhập vào một ngày (ngày tháng năm).
+// Xuất ra thứ trong tuần của ngày đó.
 
 #include <iostream>
 #include <string>
@@ -15,7 +13,7 @@ Xuất ra thứ trong tuần của ngày đó
 using namespace std;
 
 // Helper function to input a date from the user.
-Date inputDate()
+Date InputDate()
 {
     uint iDay, iMonth, iYear;
     cout << "Nhap ngay thang nam (dd mm yyyy): ";
@@ -25,7 +23,7 @@ Date inputDate()
 
 int main()
 {
-    Date date = inputDate();
+    Date date = InputDate();
     if (!date.IsValid())
     {
         cout << "Ngay thang nam khong hop le." << endl;

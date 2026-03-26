@@ -3,6 +3,8 @@
 // Ngày sinh: 15/05/1996
 // Lớp: CN1.K2025.2.CNTT
 
+#pragma once
+
 #include <string>
 
 using namespace std;

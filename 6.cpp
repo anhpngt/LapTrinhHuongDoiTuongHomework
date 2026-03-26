@@ -3,11 +3,9 @@
 // Ngày sinh: 15/05/1996
 // Lớp: CN1.K2025.2.CNTT
 
-/**
-6. Viết chương trình cho phép người dùng nhập vào danh sách học sinh (thông tin
-mỗi học sinh giống bài 5). Tìm và xuất thông tin học sinh có điểm trung bình cao
-nhất, thấp nhất ra màn hình.
-*/
+// 6. Viết chương trình cho phép người dùng nhập vào danh sách học sinh (thông tin
+// mỗi học sinh giống bài 5). Tìm và xuất thông tin học sinh có điểm trung bình cao
+// nhất, thấp nhất ra màn hình.
 
 #include <iostream>
 #include "6.h"
@@ -17,7 +15,7 @@ using namespace std;
 #define MAX_STUDENTS 100
 
 // Helper function to input a student from the user.
-Student inputStudent()
+Student InputStudent()
 {
     string sName;
     float fScoreMath, fScoreLiterature;
@@ -33,46 +31,46 @@ Student inputStudent()
 
 int main()
 {
-    int n;
+    int iN;
     cout << "Nhap so luong hoc sinh: ";
-    cin >> n;
-    if (n <= 0)
+    cin >> iN;
+    if (iN <= 0)
     {
         cout << "So luong hoc sinh phai lon hon 0." << endl;
         return 1;
     }
 
     // Get all the students
-    Student students[MAX_STUDENTS];
-    for (int i = 0; i < n; i++)
+    Student arrStudents[MAX_STUDENTS];
+    for (int i = 0; i < iN; i++)
     {
         cout << "Nhap thong tin hoc sinh thu " << (i + 1) << ":" << endl;
-        students[i] = inputStudent();
+        arrStudents[i] = InputStudent();
     }
 
     // Find the student with the highest score
     int iBestStudentIndex = 0;
-    for (int i = 1; i < n; i++)
+    for (int i = 1; i < iN; i++)
     {
-        if (students[i].AverageScore() > students[iBestStudentIndex].AverageScore())
+        if (arrStudents[i].AverageScore() > arrStudents[iBestStudentIndex].AverageScore())
         {
             iBestStudentIndex = i;
         }
     }
     cout << "Hoc sinh co diem trung binh cao nhat: " << endl;
-    students[iBestStudentIndex].Print();
+    arrStudents[iBestStudentIndex].Print();
 
     // Find the student with the lowest score
     int iWorstStudentIndex = 0;
-    for (int i = 1; i < n; i++)
+    for (int i = 1; i < iN; i++)
     {
-        if (students[i].AverageScore() < students[iWorstStudentIndex].AverageScore())
+        if (arrStudents[i].AverageScore() < arrStudents[iWorstStudentIndex].AverageScore())
         {
             iWorstStudentIndex = i;
         }
     }
     cout << "Hoc sinh co diem trung binh thap nhat: " << endl;
-    students[iWorstStudentIndex].Print();
+    arrStudents[iWorstStudentIndex].Print();
 
     return 0;
 }

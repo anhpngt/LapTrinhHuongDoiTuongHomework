@@ -3,10 +3,8 @@
 // Ngày sinh: 15/05/1996
 // Lớp: CN1.K2025.2.CNTT
 
-/**
-1: Viết chương trình cho phép người dùng nhập vào một phân số, rút gọn phân số
-và xuất kết quả ra màn hình.
-*/
+// 1: Viết chương trình cho phép người dùng nhập vào một phân số, rút gọn phân số
+// và xuất kết quả ra màn hình.
 
 #include <iostream>
 #include <numeric>
@@ -15,7 +13,7 @@ và xuất kết quả ra màn hình.
 using namespace std;
 
 // Helper function to input a fraction from the user.
-Fraction inputFraction()
+Fraction InputFraction()
 {
     int iNumerator, iDenominator;
     cout << "\tNhap tu so: ";
@@ -27,17 +25,14 @@ Fraction inputFraction()
 
 int main()
 {
-    Fraction f = inputFraction();
+    Fraction f = InputFraction();
     cout << "Phan so vua nhap: ";
     f.Print();
     return 0;
 }
 
-/**
-Initialize a new Fraction with the given numerator and denominator.
-
-Note that the constructor will automatically reduce the fraction to its simplest form.
-*/
+// Initialize a new Fraction with the given numerator and denominator.
+// The constructor will automatically reduce the fraction to its simplest form.
 Fraction::Fraction(int iNumerator, int iDenominator)
 {
     if (iDenominator == 0)
@@ -46,11 +41,11 @@ Fraction::Fraction(int iNumerator, int iDenominator)
     }
     this->iNumerator = iNumerator;
     this->iDenominator = iDenominator;
-    reduce();
+    Reduce();
 }
 
 // Reduce the fraction to its simplest form.
-void Fraction::reduce()
+void Fraction::Reduce()
 {
     int g = gcd(abs(this->iNumerator), abs(this->iDenominator));
     this->iNumerator /= g;

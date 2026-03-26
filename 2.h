@@ -11,7 +11,7 @@ private:
     int iNumerator;
     int iDenominator;
 
-    void reduce();
+    void Reduce();
 
 public:
     Fraction(int iNumerator, int iDenominator);

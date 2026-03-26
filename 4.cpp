@@ -3,10 +3,8 @@
 // Ngày sinh: 15/05/1996
 // Lớp: CN1.K2025.2.CNTT
 
-/**
-4. Viết chương trình cho phép người dùng nhập vào một dãy gồm n phân số. Tìm
-và xuất ra màn hình phân số lớn nhất. Sắp xếp dãy phân số tăng dần/giảm dần.
-*/
+// 4. Viết chương trình cho phép người dùng nhập vào một dãy gồm n phân số. Tìm
+// và xuất ra màn hình phân số lớn nhất. Sắp xếp dãy phân số tăng dần/giảm dần.
 
 #include <iostream>
 #include <numeric>
@@ -18,7 +16,7 @@ và xuất ra màn hình phân số lớn nhất. Sắp xếp dãy phân số t�
 using namespace std;
 
 // Helper function to input a fraction from the user.
-Fraction inputFraction()
+Fraction InputFraction()
 {
     int iNumerator, iDenominator;
     cout << "\tNhap tu so: ";
@@ -30,53 +28,53 @@ Fraction inputFraction()
 
 int main()
 {
-    int n;
+    int iN;
     cout << "Nhap so luong phan so: ";
-    cin >> n;
-    if (n <= 0)
+    cin >> iN;
+    if (iN <= 0)
     {
         cout << "So luong phan so phai lon hon 0." << endl;
         return 1;
     }
 
-    Fraction fractions[MAX_FRACTIONS];
-    for (int i = 0; i < n; i++)
+    Fraction arrFractions[MAX_FRACTIONS];
+    for (int i = 0; i < iN; i++)
     {
         cout << "Nhap phan so thu " << (i + 1) << ":" << endl;
-        fractions[i] = inputFraction();
+        arrFractions[i] = InputFraction();
     }
 
     // Find the largest
-    int maxIdx = 0;
-    for (int i = 1; i < n; i++)
+    int iMaxIdx = 0;
+    for (int i = 1; i < iN; i++)
     {
-        if (fractions[i].CompareTo(fractions[maxIdx]) > 0)
-            maxIdx = i;
+        if (arrFractions[i].CompareTo(arrFractions[iMaxIdx]) > 0)
+            iMaxIdx = i;
     }
     cout << "Phan so lon nhat: ";
-    fractions[maxIdx].Print();
+    arrFractions[iMaxIdx].Print();
 
     // Sort ascending
-    sort(fractions,
-         fractions + n,
+    sort(arrFractions,
+         arrFractions + iN,
          [](Fraction a, Fraction b)
          { return a.CompareTo(b) < 0; });
     cout << "Day phan so sap xep tang dan:" << endl;
-    for (int i = 0; i < n; i++)
+    for (int i = 0; i < iN; i++)
     {
         cout << "\t";
-        fractions[i].Print();
+        arrFractions[i].Print();
     }
     // Sort descending
-    sort(fractions,
-         fractions + n,
+    sort(arrFractions,
+         arrFractions + iN,
          [](Fraction a, Fraction b)
          { return a.CompareTo(b) > 0; });
     cout << "Day phan so sap xep giam dan:" << endl;
-    for (int i = 0; i < n; i++)
+    for (int i = 0; i < iN; i++)
     {
         cout << "\t";
-        fractions[i].Print();
+        arrFractions[i].Print();
     }
 
     return 0;
@@ -89,11 +87,8 @@ Fraction::Fraction()
     this->iDenominator = 1;
 }
 
-/**
-Initialize a new Fraction with the given numerator and denominator.
-
-Note that the constructor will automatically reduce the fraction to its simplest form.
-*/
+// Initialize a new Fraction with the given numerator and denominator.
+// The constructor will automatically reduce the fraction to its simplest form.
 Fraction::Fraction(int iNumerator, int iDenominator)
 {
     if (iDenominator == 0)
@@ -102,11 +97,11 @@ Fraction::Fraction(int iNumerator, int iDenominator)
     }
     this->iNumerator = iNumerator;
     this->iDenominator = iDenominator;
-    reduce();
+    Reduce();
 }
 
 // Reduce the fraction to its simplest form.
-void Fraction::reduce()
+void Fraction::Reduce()
 {
     int g = gcd(abs(this->iNumerator), abs(this->iDenominator));
     this->iNumerator /= g;
