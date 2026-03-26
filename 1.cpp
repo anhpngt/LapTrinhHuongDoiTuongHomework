@@ -14,6 +14,7 @@ và xuất kết quả ra màn hình.
 
 using namespace std;
 
+// Helper function to input a fraction from the user.
 Fraction inputFraction()
 {
     int iNumerator, iDenominator;

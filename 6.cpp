@@ -16,6 +16,7 @@ using namespace std;
 
 #define MAX_STUDENTS 100
 
+// Helper function to input a student from the user.
 Student inputStudent()
 {
     string sName;

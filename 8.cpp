@@ -14,6 +14,7 @@ Xuất ra thứ trong tuần của ngày đó
 
 using namespace std;
 
+// Helper function to input a date from the user.
 Date inputDate()
 {
     uint iDay, iMonth, iYear;
@@ -36,6 +37,7 @@ int main()
     return 0;
 }
 
+// Initialize a new Date with the given day, month, and year.
 Date::Date(uint iDay, uint iMonth, uint iYear)
 {
     this->iDay = iDay;

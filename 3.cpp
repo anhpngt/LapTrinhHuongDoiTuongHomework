@@ -14,6 +14,7 @@ tích, thương giữa chúng và xuất kết quả ra màn hình.
 
 using namespace std;
 
+// Helper function to input a fraction from the user.
 Fraction inputFraction()
 {
     int iNumerator, iDenominator;
@@ -82,6 +83,7 @@ void Fraction::Print()
     cout << this->iNumerator << "/" << this->iDenominator << endl;
 }
 
+// Add adds two fractions and returns the result.
 Fraction Fraction::Add(Fraction other)
 {
     int iNewNumerator = this->iNumerator * other.iDenominator + other.iNumerator * this->iDenominator;
@@ -89,6 +91,7 @@ Fraction Fraction::Add(Fraction other)
     return Fraction(iNewNumerator, iNewDenominator);
 }
 
+// Subtract subtracts two fractions and returns the result.
 Fraction Fraction::Subtract(Fraction other)
 {
     int iNewNumerator = this->iNumerator * other.iDenominator - other.iNumerator * this->iDenominator;
@@ -96,6 +99,7 @@ Fraction Fraction::Subtract(Fraction other)
     return Fraction(iNewNumerator, iNewDenominator);
 }
 
+// Multiply multiplies two fractions and returns the result.
 Fraction Fraction::Multiply(Fraction other)
 {
     int iNewNumerator = this->iNumerator * other.iNumerator;
@@ -103,6 +107,7 @@ Fraction Fraction::Multiply(Fraction other)
     return Fraction(iNewNumerator, iNewDenominator);
 }
 
+// Divide divides two fractions and returns the result.
 Fraction Fraction::Divide(Fraction other)
 {
     if (other.iNumerator == 0)
