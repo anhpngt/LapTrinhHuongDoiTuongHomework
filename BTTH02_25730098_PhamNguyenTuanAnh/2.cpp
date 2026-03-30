@@ -15,7 +15,8 @@ int main()
 {
     cout << "Nhap diem: " << endl;
     cDiem diem = cDiem::NhapTuConsole();
-    cout << "Diem vua nhap: " << diem.ToString() << endl;
+    cout << "Diem vua nhap: ";
+    diem.XuatRaConsole();
 
     // Thay đổi hoành độ và xuất giá trị sau khi thay đổi
     cout << "Nhap hoanh do moi: ";
@@ -47,8 +48,7 @@ int main()
 // Default constructor initializes the point to the origin (0, 0).
 cDiem::cDiem()
 {
-    this->fHoanhDo = 0.0f;
-    this->fTungDo = 0.0f;
+    cDiem(0.0f, 0.0f);
 }
 
 // Parameterized constructor initializes the point with given x and y coordinates.
@@ -70,6 +70,11 @@ cDiem cDiem::NhapTuConsole()
     cin >> fTungDo;
 
     return cDiem(fHoanhDo, fTungDo);
+}
+
+void cDiem::XuatRaConsole()
+{
+    cout << this->ToString() << endl;
 }
 
 // ToString returns a string representation of the point in the format "(x, y)".

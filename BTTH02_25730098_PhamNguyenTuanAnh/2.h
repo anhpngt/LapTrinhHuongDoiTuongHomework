@@ -27,6 +27,7 @@ public:
     cDiem(float fHoanhDo, float fTungDo);
 
     static cDiem NhapTuConsole();
+    void XuatRaConsole();
     string ToString();
 
     void setHoanhDo(float fHoanhDo);
