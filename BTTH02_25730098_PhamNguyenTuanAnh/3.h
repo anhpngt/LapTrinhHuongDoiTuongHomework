@@ -39,8 +39,8 @@ public:
     float getReal();
     float getImaginary();
 
-    cComplexNumber operator+(cComplexNumber cOther);
-    cComplexNumber operator-(cComplexNumber cOther);
-    cComplexNumber operator*(cComplexNumber cOther);
-    cComplexNumber operator/(cComplexNumber cOther);
+    cComplexNumber Add(cComplexNumber cOther);
+    cComplexNumber Subtract(cComplexNumber cOther);
+    cComplexNumber Multiply(cComplexNumber cOther);
+    cComplexNumber Divide(cComplexNumber cOther);
 };

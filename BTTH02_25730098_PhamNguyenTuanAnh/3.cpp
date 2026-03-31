@@ -93,21 +93,30 @@ float cComplexNumber::getImaginary()
 }
 
 // Adds two complex numbers and returns the result as a new complex number.
-cComplexNumber cComplexNumber::operator+(cComplexNumber cOther)
+cComplexNumber cComplexNumber::Add(cComplexNumber cOther)
 {
     return cComplexNumber(fReal + cOther.fReal, fImaginary + cOther.fImaginary);
 }
 
 // Subtracts another complex number from this complex number and returns the result as a new complex number.
-cComplexNumber cComplexNumber::operator-(cComplexNumber cOther)
+cComplexNumber cComplexNumber::Subtract(cComplexNumber cOther)
 {
     return cComplexNumber(fReal - cOther.fReal, fImaginary - cOther.fImaginary);
 }
 
 // Multiplies this complex number by another complex number and returns the result as a new complex number.
-cComplexNumber cComplexNumber::operator*(cComplexNumber cOther)
+cComplexNumber cComplexNumber::Multiply(cComplexNumber cOther)
 {
     float realPart = fReal * cOther.fReal - fImaginary * cOther.fImaginary;
     float imaginaryPart = fReal * cOther.fImaginary + fImaginary * cOther.fReal;
+    return cComplexNumber(realPart, imaginaryPart);
+}
+
+// Divides this complex number by another complex number and returns the result as a new complex number.
+cComplexNumber cComplexNumber::Divide(cComplexNumber cOther)
+{
+    float denominator = cOther.fReal * cOther.fReal + cOther.fImaginary * cOther.fImaginary;
+    float realPart = (fReal * cOther.fReal + fImaginary * cOther.fImaginary) / denominator;
+    float imaginaryPart = (fImaginary * cOther.fReal - fReal * cOther.fImaginary) / denominator;
     return cComplexNumber(realPart, imaginaryPart);
 }
