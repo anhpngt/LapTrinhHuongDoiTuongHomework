@@ -24,8 +24,19 @@ int main()
     cout << "Nhap so phuc B: " << endl;
     cComplexNumber cB = cComplexNumber::InputFromConsole();
 
-    cout << "A = " << cA.ToString() << endl;
-    cout << "B = " << cB.ToString() << endl;
+    cout << "A = ";
+    cA.OutputToConsole();
+    cout << "B = ";
+    cB.OutputToConsole();
+
+    cout << "A + B = ";
+    cA.Add(cB).OutputToConsole();
+    cout << "A - B = ";
+    cA.Subtract(cB).OutputToConsole();
+    cout << "A * B = ";
+    cA.Multiply(cB).OutputToConsole();
+    cout << "A / B = ";
+    cA.Divide(cB).OutputToConsole();
 
     return 0;
 }

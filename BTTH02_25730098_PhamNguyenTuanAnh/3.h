@@ -26,13 +26,14 @@ private:
     float fReal;
     float fImaginary;
 
+    string ToString();
+
 public:
     cComplexNumber();
     cComplexNumber(float fReal, float fImaginary);
 
     static cComplexNumber InputFromConsole();
     void OutputToConsole();
-    string ToString();
 
     void setReal(float fReal);
     void setImaginary(float fImaginary);
