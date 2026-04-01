@@ -19,13 +19,13 @@ using namespace std;
 
 class cComplexNumber
 {
-  private:
+private:
     float fReal;
     float fImaginary;
 
     string ToString();
 
-  public:
+public:
     cComplexNumber();
     cComplexNumber(float fReal, float fImaginary);
 

@@ -23,22 +23,19 @@ int main()
     int iHours;
     cin >> iHours;
     ts.SetHour(iHours);
-    cout << "Thoi gian sau khi nhap lai: " << ts.ToString()
-         << " (so gio moi: " << iHours << ")" << endl;
+    cout << "Thoi gian sau khi nhap lai: " << ts.ToString() << " (so gio moi: " << iHours << ")" << endl;
 
     cout << "Nhap lai so phut: ";
     int iMinutes;
     cin >> iMinutes;
     ts.SetMinute(iMinutes);
-    cout << "Thoi gian sau khi nhap lai: " << ts.ToString()
-         << " (so phut moi: " << iMinutes << ")" << endl;
+    cout << "Thoi gian sau khi nhap lai: " << ts.ToString() << " (so phut moi: " << iMinutes << ")" << endl;
 
     cout << "Nhap lai so giay: ";
     int iSeconds;
     cin >> iSeconds;
     ts.SetSecond(iSeconds);
-    cout << "Thoi gian sau khi nhap lai: " << ts.ToString()
-         << " (so giay moi: " << iSeconds << ")" << endl;
+    cout << "Thoi gian sau khi nhap lai: " << ts.ToString() << " (so giay moi: " << iSeconds << ")" << endl;
 
     cout << "Them so giay: ";
     int iSecondsToAdd;
@@ -109,8 +106,7 @@ bool cTimestamp::IsValid()
 // ToString converts the timestamp to a string in the format of hh:mm:ss.
 string cTimestamp::ToString()
 {
-    return to_string(this->iHour) + ":" + to_string(this->iMinute) + ":" +
-           to_string(this->iSecond);
+    return to_string(this->iHour) + ":" + to_string(this->iMinute) + ":" + to_string(this->iSecond);
 }
 
 void cTimestamp::OutputToConsole()
@@ -169,12 +165,10 @@ int cTimestamp::GetSecond()
 // AddSeconds adds (or subtracts) the given seconds to the timestamp.
 cTimestamp cTimestamp::AddSeconds(int iSeconds)
 {
-    int iTotalSeconds =
-        this->iHour * 3600 + this->iMinute * 60 + this->iSecond + iSeconds;
+    int iTotalSeconds = this->iHour * 3600 + this->iMinute * 60 + this->iSecond + iSeconds;
 
     int iSecondsInDay = 24 * 3600;
-    iTotalSeconds =
-        ((iTotalSeconds % iSecondsInDay) + iSecondsInDay) % iSecondsInDay;
+    iTotalSeconds = ((iTotalSeconds % iSecondsInDay) + iSecondsInDay) % iSecondsInDay;
 
     int iNewHour = iTotalSeconds / 3600;
     int iNewMinute = (iTotalSeconds % 3600) / 60;
@@ -188,8 +182,7 @@ cTimestamp cTimestamp::AddMinutes(int iMinutes)
 {
     int iTotalMinutes = this->iHour * 60 + this->iMinute + iMinutes;
     int iMinutesInDay = 24 * 60;
-    iTotalMinutes =
-        ((iTotalMinutes % iMinutesInDay) + iMinutesInDay) % iMinutesInDay;
+    iTotalMinutes = ((iTotalMinutes % iMinutesInDay) + iMinutesInDay) % iMinutesInDay;
 
     int iNewHour = iTotalMinutes / 60;
     int iNewMinute = iTotalMinutes % 60;
@@ -211,12 +204,10 @@ cTimestamp cTimestamp::AddHours(int iHours)
 // AddTime adds the given timestamp to the current timestamp.
 cTimestamp cTimestamp::AddTime(cTimestamp ts)
 {
-    int iTotalSeconds = this->iHour * 3600 + this->iMinute * 60 +
-                        this->iSecond + ts.iHour * 3600 + ts.iMinute * 60 +
-                        ts.iSecond;
+    int iTotalSeconds =
+        this->iHour * 3600 + this->iMinute * 60 + this->iSecond + ts.iHour * 3600 + ts.iMinute * 60 + ts.iSecond;
     int iSecondsInDay = 24 * 3600;
-    iTotalSeconds =
-        ((iTotalSeconds % iSecondsInDay) + iSecondsInDay) % iSecondsInDay;
+    iTotalSeconds = ((iTotalSeconds % iSecondsInDay) + iSecondsInDay) % iSecondsInDay;
 
     int iNewHour = iTotalSeconds / 3600;
     int iNewMinute = (iTotalSeconds % 3600) / 60;

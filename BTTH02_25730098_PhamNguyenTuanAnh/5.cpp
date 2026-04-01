@@ -15,6 +15,52 @@ using namespace std;
 
 int main()
 {
+    cout << "Nhap ngay thang nam:" << endl;
+    cDate date = cDate::InputFromConsole();
+    cout << "Ngay thang nam da nhap: ";
+    date.OutputToConsole();
+
+    cout << "Nhap lai ngay: ";
+    int iDay;
+    cin >> iDay;
+    date.SetDay(iDay);
+    cout << "Ngay thang nam sau khi nhap lai: ";
+    date.OutputToConsole();
+
+    cout << "Nhap lai thang: ";
+    int iMonth;
+    cin >> iMonth;
+    date.SetMonth(iMonth);
+    cout << "Ngay thang nam sau khi nhap lai: ";
+    date.OutputToConsole();
+
+    cout << "Nhap lai nam: ";
+    int iYear;
+    cin >> iYear;
+    date.SetYear(iYear);
+    cout << "Ngay thang nam sau khi nhap lai: ";
+    date.OutputToConsole();
+
+    cout << "Ket qua khi cong them 1 ngay: ";
+    date.AddDays(1);
+    date.OutputToConsole();
+
+    cout << "Ket qua khi cong them 2 thang: ";
+    date.AddMonths(2);
+    date.OutputToConsole();
+
+    cout << "Ket qua khi tru di 3 nam: ";
+    date.AddYears(-3);
+    date.OutputToConsole();
+
+    cout << "Ket qua khi cong them 1 ngay, 2 thang, 3 nam: ";
+    date.AddDate(cDate(1, 2, 3));
+    date.OutputToConsole();
+
+    cout << "Ngay trong tuan: " << date.GetDateOfWeek() << endl;
+
+    cout << "Co phai la nam nhuan: " << (date.IsLeapYear() ? "Co" : "Khong") << endl;
+    return 0;
 }
 
 // Initialize the date with default values (1 for day, 1 for month, and 1900 for
@@ -34,8 +80,7 @@ cDate::cDate(int iDay, int iMonth, int iYear)
     this->iYear = iYear;
     if (!this->IsValid())
     {
-        throw invalid_argument("Ngay thang nam khong hop le: " +
-                               this->ToString());
+        throw invalid_argument("Ngay thang nam khong hop le: " + this->ToString());
     }
 }
 
@@ -67,8 +112,7 @@ bool cDate::IsValid()
             return false;
         break;
     case 2:
-        if (this->iYear % 4 == 0 &&
-            (this->iYear % 100 != 0 || this->iYear % 400 == 0))
+        if (this->iYear % 4 == 0 && (this->iYear % 100 != 0 || this->iYear % 400 == 0))
         {
             if (this->iDay < 1 || this->iDay > 29)
                 return false;
@@ -97,8 +141,7 @@ cDate cDate::InputFromConsole()
 // ToString converts the date to a string in the format of dd/mm/yyyy.
 string cDate::ToString()
 {
-    return to_string(this->iDay) + "/" + to_string(this->iMonth) + "/" +
-           to_string(this->iYear);
+    return to_string(this->iDay) + "/" + to_string(this->iMonth) + "/" + to_string(this->iYear);
 }
 
 // OutputToConsole outputs the date to the console.
@@ -141,12 +184,6 @@ int cDate::GetMonth()
 int cDate::GetYear()
 {
     return this->iYear;
-}
-
-// IsLeapYear checks if the current year is a leap year.
-bool cDate::IsLeapYear()
-{
-    return (iYear % 4 == 0 && (iYear % 100 != 0 || iYear % 400 == 0));
 }
 
 // DaysInMonth returns the number of days in the current month.
@@ -214,4 +251,21 @@ void cDate::AddDate(cDate date)
     AddYears(date.iYear);
     AddMonths(date.iMonth);
     AddDays(date.iDay);
+}
+
+// GetDateOfWeek returns the day of the week for the current date.
+//
+// For reference, see: https://en.wikipedia.org/wiki/Zeller%27s_congruence
+int cDate::GetDateOfWeek()
+{
+    int iDayOfWeek = (iDay + 2 * iMonth + 3 * (iMonth + 1) / 5 + iYear + iYear / 4 - iYear / 100 + iYear / 400) % 7;
+    return iDayOfWeek;
+}
+
+// IsLeapYear checks if the current year is a leap year.
+//
+// For reference, see: https://en.wikipedia.org/wiki/Leap_year
+bool cDate::IsLeapYear()
+{
+    return (this->iYear % 4 == 0 && (this->iYear % 100 != 0 || this->iYear % 400 == 0));
 }

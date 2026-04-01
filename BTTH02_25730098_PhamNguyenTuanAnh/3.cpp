@@ -128,11 +128,8 @@ cComplexNumber cComplexNumber::Multiply(cComplexNumber cOther)
 // as a new complex number.
 cComplexNumber cComplexNumber::Divide(cComplexNumber cOther)
 {
-    float denominator =
-        cOther.fReal * cOther.fReal + cOther.fImaginary * cOther.fImaginary;
-    float realPart =
-        (fReal * cOther.fReal + fImaginary * cOther.fImaginary) / denominator;
-    float imaginaryPart =
-        (fImaginary * cOther.fReal - fReal * cOther.fImaginary) / denominator;
+    float denominator = cOther.fReal * cOther.fReal + cOther.fImaginary * cOther.fImaginary;
+    float realPart = (fReal * cOther.fReal + fImaginary * cOther.fImaginary) / denominator;
+    float imaginaryPart = (fImaginary * cOther.fReal - fReal * cOther.fImaginary) / denominator;
     return cComplexNumber(realPart, imaginaryPart);
 }

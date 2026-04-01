@@ -18,13 +18,13 @@ using namespace std;
 
 class cPhanSo
 {
-  private:
+private:
     int iTuSo;
     int iMauSo;
 
     void RutGon();
 
-  public:
+public:
     cPhanSo();
     cPhanSo(int iTuSo, int iMauSo);
 

@@ -131,8 +131,7 @@ cPhanSo cPhanSo::Chia(cPhanSo other)
 {
     if (other.iTuSo == 0)
     {
-        throw std::invalid_argument(
-            "Khong the chia cho phan so co tu so bang 0");
+        throw std::invalid_argument("Khong the chia cho phan so co tu so bang 0");
     }
 
     int iTuSo = this->iTuSo * other.iMauSo;

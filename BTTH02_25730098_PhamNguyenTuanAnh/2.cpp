@@ -82,8 +82,7 @@ void cDiem::XuatRaConsole()
 // ToString returns a string representation of the point in the format "(x, y)".
 string cDiem::ToString()
 {
-    return "(" + to_string(this->fHoanhDo) + ", " + to_string(this->fTungDo) +
-           ")";
+    return "(" + to_string(this->fHoanhDo) + ", " + to_string(this->fTungDo) + ")";
 }
 
 // Sets the x-coordinate of the point.

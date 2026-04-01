@@ -18,11 +18,11 @@ using namespace std;
 
 class cDiem
 {
-  private:
+private:
     float fHoanhDo;
     float fTungDo;
 
-  public:
+public:
     cDiem();
     cDiem(float fHoanhDo, float fTungDo);
 

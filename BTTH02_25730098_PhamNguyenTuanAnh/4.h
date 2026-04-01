@@ -17,14 +17,14 @@ using namespace std;
 
 class cTimestamp
 {
-  private:
+private:
     int iHour;
     int iMinute;
     int iSecond;
 
     bool IsValid();
 
-  public:
+public:
     cTimestamp();
     cTimestamp(int iHour, int iMinute, int iSecond);
     static cTimestamp InputFromConsole();
