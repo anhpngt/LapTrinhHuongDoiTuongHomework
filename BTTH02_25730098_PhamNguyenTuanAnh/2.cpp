@@ -22,15 +22,15 @@ int main()
     cout << "Nhap hoanh do moi: ";
     float fHoanhDoMoi;
     cin >> fHoanhDoMoi;
-    diem.setHoanhDo(fHoanhDoMoi);
-    cout << "Hoanh do sau khi thay doi: " << diem.getHoanhDo() << endl;
+    diem.SetHoanhDo(fHoanhDoMoi);
+    cout << "=> Hoanh do sau khi thay doi: " << diem.GetHoanhDo() << endl;
 
     // Thay đổi tung độ và xuất giá trị sau khi thay đổi
     cout << "Nhap tung do moi: ";
     float fTungDoMoi;
     cin >> fTungDoMoi;
-    diem.setTungDo(fTungDoMoi);
-    cout << "Tung do sau khi thay doi: " << diem.getTungDo() << endl;
+    diem.SetTungDo(fTungDoMoi);
+    cout << "=> Tung do sau khi thay doi: " << diem.GetTungDo() << endl;
 
     // Tịnh tiến điểm và xuất giá trị sau khi tịnh tiến
     cout << "Nhap delta x va delta y de tinh tien: " << endl;
@@ -39,8 +39,9 @@ int main()
     cin >> fDeltaX;
     cout << "\tDelta y: ";
     cin >> fDeltaY;
-    diem.tinhTien(fDeltaX, fDeltaY);
-    cout << "Diem sau khi tinh tien: " << diem.ToString() << endl;
+    diem.TinhTien(fDeltaX, fDeltaY);
+    cout << "=> Diem sau khi tinh tien: ";
+    diem.XuatRaConsole();
 
     return 0;
 }
@@ -84,32 +85,32 @@ string cDiem::ToString()
 }
 
 // Sets the x-coordinate of the point.
-void cDiem::setHoanhDo(float fHoanhDo)
+void cDiem::SetHoanhDo(float fHoanhDo)
 {
     this->m_fHoanhDo = fHoanhDo;
 }
 
 // Sets the y-coordinate of the point.
-void cDiem::setTungDo(float fTungDo)
+void cDiem::SetTungDo(float fTungDo)
 {
     this->m_fTungDo = fTungDo;
 }
 
 // Returns the x-coordinate of the point.
-float cDiem::getHoanhDo()
+float cDiem::GetHoanhDo()
 {
     return this->m_fHoanhDo;
 }
 
 // Returns the y-coordinate of the point.
-float cDiem::getTungDo()
+float cDiem::GetTungDo()
 {
     return this->m_fTungDo;
 }
 
 // Translates the point by adding the given delta x and delta y to the current
 // coordinates.
-void cDiem::tinhTien(float fDeltaX, float fDeltaY)
+void cDiem::TinhTien(float fDeltaX, float fDeltaY)
 {
     this->m_fHoanhDo += fDeltaX;
     this->m_fTungDo += fDeltaY;

@@ -29,14 +29,14 @@ using namespace std;
 class cVehicle
 {
 private:
-    string m_sOwner;
-    string m_sType;
+    string m_strOwner;
+    string m_strType;
     int m_iPrice;
     int m_iEngineDisplacement;
 
 public:
     cVehicle();
-    cVehicle(string sOwner, string sType, int iPrice, int iEngineDisplacement);
+    cVehicle(string strOwner, string strType, int iPrice, int iEngineDisplacement);
 
     static cVehicle InputFromConsole();
 
@@ -44,8 +44,8 @@ public:
     string GetType();
     int GetPrice();
     int GetEngineDisplacement();
-    void SetOwner(string sOwner);
-    void SetType(string sType);
+    void SetOwner(string strOwner);
+    void SetType(string strType);
     void SetPrice(int iPrice);
     void SetEngineDisplacement(int iEngineDisplacement);
 

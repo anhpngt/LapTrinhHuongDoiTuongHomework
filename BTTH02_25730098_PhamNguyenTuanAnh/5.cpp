@@ -24,42 +24,42 @@ int main()
     int iDay;
     cin >> iDay;
     date.SetDay(iDay);
-    cout << "Ngay thang nam sau khi nhap lai: ";
+    cout << "=> Ngay thang nam sau khi nhap lai: ";
     date.OutputToConsole();
 
     cout << "Nhap lai thang: ";
     int iMonth;
     cin >> iMonth;
     date.SetMonth(iMonth);
-    cout << "Ngay thang nam sau khi nhap lai: ";
+    cout << "=> Ngay thang nam sau khi nhap lai: ";
     date.OutputToConsole();
 
     cout << "Nhap lai nam: ";
     int iYear;
     cin >> iYear;
     date.SetYear(iYear);
-    cout << "Ngay thang nam sau khi nhap lai: ";
+    cout << "=> Ngay thang nam sau khi nhap lai: ";
     date.OutputToConsole();
 
-    cout << "Ket qua khi cong them 1 ngay: ";
+    cout << "=> Ket qua khi cong them 1 ngay: ";
     date.AddDays(1);
     date.OutputToConsole();
 
-    cout << "Ket qua khi cong them 2 thang: ";
+    cout << "=> Ket qua khi cong them 2 thang: ";
     date.AddMonths(2);
     date.OutputToConsole();
 
-    cout << "Ket qua khi tru di 3 nam: ";
+    cout << "=> Ket qua khi tru di 3 nam: ";
     date.AddYears(-3);
     date.OutputToConsole();
 
-    cout << "Ket qua khi cong them 1 ngay, 2 thang, 3 nam: ";
+    cout << "=> Ket qua khi cong them 1 ngay, 2 thang, 3 nam: ";
     date.AddDate(cDate(1, 2, 3));
     date.OutputToConsole();
 
-    cout << "Ngay trong tuan: " << date.GetDateOfWeek() << endl;
+    cout << "=> Ngay trong tuan: " << date.GetDateOfWeek() << endl;
 
-    cout << "Co phai la nam nhuan: " << (date.IsLeapYear() ? "Co" : "Khong") << endl;
+    cout << "=> Co phai la nam nhuan: " << (date.IsLeapYear() ? "Co" : "Khong") << endl;
     return 0;
 }
 

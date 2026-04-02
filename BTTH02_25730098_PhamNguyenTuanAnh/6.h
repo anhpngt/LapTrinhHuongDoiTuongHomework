@@ -23,16 +23,16 @@ private:
 
 public:
     cString();
-    cString(string sString);
-    cString(const cString& sOther);
-    cString& operator=(const cString& sOther);
+    cString(string strString);
+    cString(const cString& strOther);
+    cString& operator=(const cString& strOther);
     ~cString();
     static cString InputFromConsole();
     void OutputToConsole();
 
     int Length();
     string ToString();
-    cString Concat(cString sOther);
+    cString Concat(cString strOther);
     cString Reversed();
     cString ToUpper();
     cString ToLower();

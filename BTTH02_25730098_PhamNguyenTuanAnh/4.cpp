@@ -23,31 +23,31 @@ int main()
     int iHours;
     cin >> iHours;
     ts.SetHour(iHours);
-    cout << "Thoi gian sau khi nhap lai: " << ts.ToString() << " (so gio moi: " << iHours << ")" << endl;
+    cout << "=> Thoi gian sau khi nhap lai: " << ts.ToString() << " (so gio moi: " << iHours << ")" << endl;
 
     cout << "Nhap lai so phut: ";
     int iMinutes;
     cin >> iMinutes;
     ts.SetMinute(iMinutes);
-    cout << "Thoi gian sau khi nhap lai: " << ts.ToString() << " (so phut moi: " << iMinutes << ")" << endl;
+    cout << "=> Thoi gian sau khi nhap lai: " << ts.ToString() << " (so phut moi: " << iMinutes << ")" << endl;
 
     cout << "Nhap lai so giay: ";
     int iSeconds;
     cin >> iSeconds;
     ts.SetSecond(iSeconds);
-    cout << "Thoi gian sau khi nhap lai: " << ts.ToString() << " (so giay moi: " << iSeconds << ")" << endl;
+    cout << "=> Thoi gian sau khi nhap lai: " << ts.ToString() << " (so giay moi: " << iSeconds << ")" << endl;
 
-    cout << "Them so giay: ";
+    cout << "=> Them so giay: ";
     int iSecondsToAdd;
     cin >> iSecondsToAdd;
     ts.AddSeconds(iSecondsToAdd).OutputToConsole();
 
-    cout << "Them so phut: ";
+    cout << "=> Them so phut: ";
     int iMinutesToAdd;
     cin >> iMinutesToAdd;
     ts.AddMinutes(iMinutesToAdd).OutputToConsole();
 
-    cout << "Them so gio: ";
+    cout << "=> Them so gio: ";
     int iHoursToAdd;
     cin >> iHoursToAdd;
     ts.AddHours(iHoursToAdd).OutputToConsole();

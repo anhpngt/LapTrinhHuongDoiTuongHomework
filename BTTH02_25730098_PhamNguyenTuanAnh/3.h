@@ -32,10 +32,10 @@ public:
     static cComplexNumber InputFromConsole();
     void OutputToConsole();
 
-    void setReal(float fReal);
-    void setImaginary(float fImaginary);
-    float getReal();
-    float getImaginary();
+    void SetReal(float fReal);
+    void SetImaginary(float fImaginary);
+    float GetReal();
+    float GetImaginary();
 
     cComplexNumber Add(cComplexNumber cOther);
     cComplexNumber Subtract(cComplexNumber cOther);

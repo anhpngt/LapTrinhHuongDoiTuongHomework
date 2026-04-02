@@ -30,9 +30,9 @@ public:
     void XuatRaConsole();
     string ToString();
 
-    void setHoanhDo(float fHoanhDo);
-    void setTungDo(float fTungDo);
-    float getHoanhDo();
-    float getTungDo();
-    void tinhTien(float fDeltaX, float fDeltaY);
+    void SetHoanhDo(float fHoanhDo);
+    void SetTungDo(float fTungDo);
+    float GetHoanhDo();
+    float GetTungDo();
+    void TinhTien(float fDeltaX, float fDeltaY);
 };

@@ -29,25 +29,25 @@ int main()
     cVehicle v2 = cVehicle("Nguyen Van B", "Xe tai", 200000, 5000);
     cVehicle v3 = cVehicle::InputFromConsole();
 
-    cout << "Bang ke khai thong tin xe 1:\n" << v1.GetAllDetails() << endl;
-    cout << "Bang ke khai thong tin xe 2:\n" << v2.GetAllDetails() << endl;
-    cout << "Bang ke khai thong tin xe 3:\n" << v3.GetAllDetails() << endl;
+    cout << "=> Bang ke khai thong tin xe 1:\n" << v1.GetAllDetails() << endl;
+    cout << "=> Bang ke khai thong tin xe 2:\n" << v2.GetAllDetails() << endl;
+    cout << "=> Bang ke khai thong tin xe 3:\n" << v3.GetAllDetails() << endl;
 }
 
 // Default constructor initializes all fields to empty/zero values.
 cVehicle::cVehicle()
 {
-    this->m_sOwner = "";
-    this->m_sType = "";
+    this->m_strOwner = "";
+    this->m_strType = "";
     this->m_iPrice = 0;
     this->m_iEngineDisplacement = 0;
 }
 
 // Parameterized constructor initializes the vehicle with the given values.
-cVehicle::cVehicle(string sOwner, string sType, int iPrice, int iEngineDisplacement)
+cVehicle::cVehicle(string strOwner, string strType, int iPrice, int iEngineDisplacement)
 {
-    this->SetOwner(sOwner);
-    this->SetType(sType);
+    this->SetOwner(strOwner);
+    this->SetType(strType);
     this->SetPrice(iPrice);
     this->SetEngineDisplacement(iEngineDisplacement);
 }
@@ -55,13 +55,13 @@ cVehicle::cVehicle(string sOwner, string sType, int iPrice, int iEngineDisplacem
 // InputFromConsole prompts the user to input vehicle data from the console.
 cVehicle cVehicle::InputFromConsole()
 {
-    string sOwner;
+    string strOwner;
     cout << "Nhap ten chu so huu xe: ";
-    getline(cin, sOwner);
+    getline(cin, strOwner);
 
-    string sType;
+    string strType;
     cout << "Nhap loai xe: ";
-    getline(cin, sType);
+    getline(cin, strType);
 
     int iPrice;
     cout << "Nhap gia tri xe: ";
@@ -71,19 +71,19 @@ cVehicle cVehicle::InputFromConsole()
     cout << "Nhap dung tich xylanh: ";
     cin >> iEngineDisplacement;
 
-    return cVehicle(sOwner, sType, iPrice, iEngineDisplacement);
+    return cVehicle(strOwner, strType, iPrice, iEngineDisplacement);
 }
 
 // GetOwner returns the owner of the vehicle.
 string cVehicle::GetOwner()
 {
-    return this->m_sOwner;
+    return this->m_strOwner;
 }
 
 // GetType returns the type of the vehicle.
 string cVehicle::GetType()
 {
-    return this->m_sType;
+    return this->m_strType;
 }
 
 // GetPrice returns the price of the vehicle.
@@ -99,15 +99,15 @@ int cVehicle::GetEngineDisplacement()
 }
 
 // SetOwner sets the owner of the vehicle.
-void cVehicle::SetOwner(string sOwner)
+void cVehicle::SetOwner(string strOwner)
 {
-    this->m_sOwner = sOwner;
+    this->m_strOwner = strOwner;
 }
 
 // SetType sets the type of the vehicle.
-void cVehicle::SetType(string sType)
+void cVehicle::SetType(string strType)
 {
-    this->m_sType = sType;
+    this->m_strType = strType;
 }
 
 // SetPrice sets the price of the vehicle. Throws if price is negative.
@@ -146,7 +146,7 @@ int cVehicle::GetRegistrationTax()
 // GetAllDetails returns a formatted string with all vehicle details and tax.
 string cVehicle::GetAllDetails()
 {
-    return "\tChu xe: " + this->m_sOwner + "\n" + "\tLoai xe: " + this->m_sType + "\n" +
+    return "\tChu xe: " + this->m_strOwner + "\n" + "\tLoai xe: " + this->m_strType + "\n" +
            "\tTri gia xe: " + to_string(this->m_iPrice) + "\n" +
            "\tDung tich xylanh: " + to_string(this->m_iEngineDisplacement) + "cc\n" +
            "\tThue truoc ba: " + to_string(this->GetRegistrationTax()) + "\n";

@@ -26,13 +26,13 @@ int main()
     cout << "B = ";
     cB.OutputToConsole();
 
-    cout << "A + B = ";
+    cout << "=> A + B = ";
     cA.Add(cB).OutputToConsole();
-    cout << "A - B = ";
+    cout << "=> A - B = ";
     cA.Subtract(cB).OutputToConsole();
-    cout << "A * B = ";
+    cout << "=> A * B = ";
     cA.Multiply(cB).OutputToConsole();
-    cout << "A / B = ";
+    cout << "=> A / B = ";
     cA.Divide(cB).OutputToConsole();
 
     return 0;
@@ -76,25 +76,25 @@ void cComplexNumber::OutputToConsole()
 }
 
 // Set the real part of the complex number.
-void cComplexNumber::setReal(float fReal)
+void cComplexNumber::SetReal(float fReal)
 {
     this->m_fReal = fReal;
 }
 
 // Set the imaginary part of the complex number.
-void cComplexNumber::setImaginary(float fImaginary)
+void cComplexNumber::SetImaginary(float fImaginary)
 {
     this->m_fImaginary = fImaginary;
 }
 
 // Get the real part of the complex number.
-float cComplexNumber::getReal()
+float cComplexNumber::GetReal()
 {
     return m_fReal;
 }
 
 // Get the imaginary part of the complex number.
-float cComplexNumber::getImaginary()
+float cComplexNumber::GetImaginary()
 {
     return m_fImaginary;
 }
