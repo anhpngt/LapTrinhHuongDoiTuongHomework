@@ -163,12 +163,11 @@ int cTimestamp::GetSecond()
 }
 
 // AddSeconds adds (or subtracts) the given seconds to the timestamp.
+// Seconds overflow into minutes and hours. Throws if the result exceeds 23:59:59
+// or goes below 00:00:00.
 cTimestamp cTimestamp::AddSeconds(int iSeconds)
 {
     int iTotalSeconds = this->iHour * 3600 + this->iMinute * 60 + this->iSecond + iSeconds;
-
-    int iSecondsInDay = 24 * 3600;
-    iTotalSeconds = ((iTotalSeconds % iSecondsInDay) + iSecondsInDay) % iSecondsInDay;
 
     int iNewHour = iTotalSeconds / 3600;
     int iNewMinute = (iTotalSeconds % 3600) / 60;
@@ -178,11 +177,11 @@ cTimestamp cTimestamp::AddSeconds(int iSeconds)
 }
 
 // AddMinutes adds the given minutes to the timestamp.
+// Minutes overflow into hours. Throws if the result exceeds 23:59:59 or goes
+// below 00:00:00.
 cTimestamp cTimestamp::AddMinutes(int iMinutes)
 {
     int iTotalMinutes = this->iHour * 60 + this->iMinute + iMinutes;
-    int iMinutesInDay = 24 * 60;
-    iTotalMinutes = ((iTotalMinutes % iMinutesInDay) + iMinutesInDay) % iMinutesInDay;
 
     int iNewHour = iTotalMinutes / 60;
     int iNewMinute = iTotalMinutes % 60;
