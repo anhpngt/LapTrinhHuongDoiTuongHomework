@@ -17,7 +17,21 @@ using namespace std;
 
 class cString
 {
+private:
+    char* pData;
+    int iLength;
+
 public:
     cString();
     cString(string sString);
+    ~cString();
+    static cString InputFromConsole();
+    void OutputToConsole();
+
+    int Length();
+    string ToString();
+    cString Concat(cString sOther);
+    cString Reversed();
+    cString ToUpper();
+    cString ToLower();
 };
