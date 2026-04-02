@@ -122,7 +122,7 @@ int cVehicle::GetRegistrationTax()
         return this->iPrice * 0.01;
     }
 
-    if (this->iEngineDisplacement < 200)
+    if (this->iEngineDisplacement <= 200)
     {
         return this->iPrice * 0.03;
     }
