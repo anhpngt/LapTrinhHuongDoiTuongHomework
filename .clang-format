@@ -4,3 +4,4 @@ IndentWidth: 4
 AccessModifierOffset: -4
 AllowShortFunctionsOnASingleLine: None
 ColumnLimit: 120
+SeparateDefinitionBlocks: Always

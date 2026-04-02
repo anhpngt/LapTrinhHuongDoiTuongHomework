@@ -28,6 +28,10 @@ int main()
     cVehicle v1 = cVehicle("Nguyen Van A", "Xe con", 100000, 1000);
     cVehicle v2 = cVehicle("Nguyen Van B", "Xe tai", 200000, 5000);
     cVehicle v3 = cVehicle::InputFromConsole();
+
+    cout << "Bang ke khai thong tin xe 1:\n" << v1.GetAllDetails() << endl;
+    cout << "Bang ke khai thong tin xe 2:\n" << v2.GetAllDetails() << endl;
+    cout << "Bang ke khai thong tin xe 3:\n" << v3.GetAllDetails() << endl;
 }
 
 cVehicle::cVehicle()
@@ -57,7 +61,7 @@ cVehicle cVehicle::InputFromConsole()
     getline(cin, sType);
 
     int iPrice;
-    cout << "Nhap gia tri xe";
+    cout << "Nhap gia tri xe: ";
     cin >> iPrice;
 
     int iEngineDisplacement;
@@ -71,14 +75,17 @@ string cVehicle::GetOwner()
 {
     return this->sOwner;
 }
+
 string cVehicle::GetType()
 {
     return this->sType;
 }
+
 int cVehicle::GetPrice()
 {
     return this->iPrice;
 }
+
 int cVehicle::GetEngineDisplacement()
 {
     return this->iEngineDisplacement;
@@ -106,4 +113,27 @@ void cVehicle::SetEngineDisplacement(int iEngineDisplacement)
     if (iEngineDisplacement < 0)
         throw invalid_argument("Dung tich xylanh khong duoc nho hon 0.");
     this->iEngineDisplacement = iEngineDisplacement;
+}
+
+int cVehicle::GetRegistrationTax()
+{
+    if (this->iEngineDisplacement < 100)
+    {
+        return this->iPrice * 0.01;
+    }
+
+    if (this->iEngineDisplacement < 200)
+    {
+        return this->iPrice * 0.03;
+    }
+
+    return this->iPrice * 0.05;
+}
+
+string cVehicle::GetAllDetails()
+{
+    return "\tChu xe: " + this->sOwner + "\n" + "\tLoai xe: " + this->sType + "\n" +
+           "\tTri gia xe: " + to_string(this->iPrice) + "\n" +
+           "\tDung tich xylanh: " + to_string(this->iEngineDisplacement) + "cc\n" +
+           "\tThue truoc ba: " + to_string(this->GetRegistrationTax()) + "\n";
 }

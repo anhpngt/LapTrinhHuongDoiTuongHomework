@@ -48,4 +48,7 @@ public:
     void SetType(string sType);
     void SetPrice(int iPrice);
     void SetEngineDisplacement(int iEngineDisplacement);
+
+    int GetRegistrationTax();
+    string GetAllDetails();
 };
