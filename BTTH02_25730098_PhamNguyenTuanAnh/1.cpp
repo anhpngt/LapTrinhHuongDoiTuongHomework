@@ -1,5 +1,5 @@
 // Mã số sinh viên: 25730098
-// Họ và tên: Phạm Nguyễn Tuấn Anh
+// Họ và tên sinh viên: Phạm Nguyễn Tuấn Anh
 // Ngày sinh: 15/05/1996
 // Lớp: CN1.K2025.2.CNTT
 
@@ -20,8 +20,8 @@ int main()
     cout << "Nhap phan so thu hai" << endl;
     cPhanSo ps2 = cPhanSo::NhapTuConsole();
 
-    cout << "Phan so thu nhat: " << ps1.ToString() << endl;
-    cout << "Phan so thu hai: " << ps2.ToString() << endl;
+    cout << "=> Phan so thu nhat: " << ps1.ToString() << endl;
+    cout << "=> Phan so thu hai: " << ps2.ToString() << endl;
 
     cout << "=> Ket qua phep cong: " << ps1.Cong(ps2).ToString() << endl;
     cout << "=> Ket qua phep tru: " << ps1.Tru(ps2).ToString() << endl;

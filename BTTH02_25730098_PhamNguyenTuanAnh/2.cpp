@@ -1,5 +1,5 @@
 // Mã số sinh viên: 25730098
-// Họ và tên: Phạm Nguyễn Tuấn Anh
+// Họ và tên sinh viên: Phạm Nguyễn Tuấn Anh
 // Ngày sinh: 15/05/1996
 // Lớp: CN1.K2025.2.CNTT
 
@@ -15,7 +15,7 @@ int main()
 {
     cout << "Nhap diem: " << endl;
     cDiem diem = cDiem::NhapTuConsole();
-    cout << "Diem vua nhap: ";
+    cout << "=> Diem vua nhap: ";
     diem.XuatRaConsole();
 
     // Thay đổi hoành độ và xuất giá trị sau khi thay đổi
@@ -47,7 +47,9 @@ int main()
 }
 
 // Default constructor initializes the point to the origin (0, 0).
-cDiem::cDiem() : cDiem(0.0f, 0.0f) {}
+cDiem::cDiem() : cDiem(0.0f, 0.0f)
+{
+}
 
 // Parameterized constructor initializes the point with given x and y
 // coordinates.
