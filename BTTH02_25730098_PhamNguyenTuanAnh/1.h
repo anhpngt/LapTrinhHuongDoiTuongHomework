@@ -19,8 +19,8 @@ using namespace std;
 class cPhanSo
 {
 private:
-    int iTuSo;
-    int iMauSo;
+    int m_iTuSo;
+    int m_iMauSo;
 
     void RutGon();
 

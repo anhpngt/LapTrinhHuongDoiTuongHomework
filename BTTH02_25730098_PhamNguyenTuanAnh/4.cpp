@@ -59,17 +59,17 @@ int main()
 // second).
 cTimestamp::cTimestamp()
 {
-    this->iHour = 0;
-    this->iMinute = 0;
-    this->iSecond = 0;
+    this->m_iHour = 0;
+    this->m_iMinute = 0;
+    this->m_iSecond = 0;
 }
 
 // Initialize the timestamp with the given hour, minute, and second.
 cTimestamp::cTimestamp(int iHour, int iMinute, int iSecond)
 {
-    this->iHour = iHour;
-    this->iMinute = iMinute;
-    this->iSecond = iSecond;
+    this->m_iHour = iHour;
+    this->m_iMinute = iMinute;
+    this->m_iSecond = iSecond;
     if (!this->IsValid())
     {
         throw invalid_argument("Thoi gian khong hop le: " + this->ToString());
@@ -94,11 +94,11 @@ cTimestamp cTimestamp::InputFromConsole()
 // IsValid checks if the timestamp is valid.
 bool cTimestamp::IsValid()
 {
-    if (this->iHour < 0 || this->iHour > 23)
+    if (this->m_iHour < 0 || this->m_iHour > 23)
         return false;
-    if (this->iMinute < 0 || this->iMinute > 59)
+    if (this->m_iMinute < 0 || this->m_iMinute > 59)
         return false;
-    if (this->iSecond < 0 || this->iSecond > 59)
+    if (this->m_iSecond < 0 || this->m_iSecond > 59)
         return false;
     return true;
 }
@@ -106,9 +106,10 @@ bool cTimestamp::IsValid()
 // ToString converts the timestamp to a string in the format of hh:mm:ss.
 string cTimestamp::ToString()
 {
-    return to_string(this->iHour) + ":" + to_string(this->iMinute) + ":" + to_string(this->iSecond);
+    return to_string(this->m_iHour) + ":" + to_string(this->m_iMinute) + ":" + to_string(this->m_iSecond);
 }
 
+// OutputToConsole outputs the timestamp to the console.
 void cTimestamp::OutputToConsole()
 {
     cout << this->ToString() << endl;
@@ -121,7 +122,7 @@ void cTimestamp::SetHour(int iHour)
     {
         throw invalid_argument("So gio khong hop le: " + to_string(iHour));
     }
-    this->iHour = iHour;
+    this->m_iHour = iHour;
 }
 
 // SetMinute sets the minute of the timestamp.
@@ -131,7 +132,7 @@ void cTimestamp::SetMinute(int iMinute)
     {
         throw invalid_argument("So phut khong hop le: " + to_string(iMinute));
     }
-    this->iMinute = iMinute;
+    this->m_iMinute = iMinute;
 }
 
 // SetSecond sets the second of the timestamp.
@@ -141,25 +142,25 @@ void cTimestamp::SetSecond(int iSecond)
     {
         throw invalid_argument("So giay khong hop le: " + to_string(iSecond));
     }
-    this->iSecond = iSecond;
+    this->m_iSecond = iSecond;
 }
 
 // GetHour gets the hour of the timestamp.
 int cTimestamp::GetHour()
 {
-    return this->iHour;
+    return this->m_iHour;
 }
 
 // GetMinute gets the minute of the timestamp.
 int cTimestamp::GetMinute()
 {
-    return this->iMinute;
+    return this->m_iMinute;
 }
 
 // GetSecond gets the second of the timestamp.
 int cTimestamp::GetSecond()
 {
-    return this->iSecond;
+    return this->m_iSecond;
 }
 
 // AddSeconds adds (or subtracts) the given seconds to the timestamp.
@@ -167,7 +168,7 @@ int cTimestamp::GetSecond()
 // or goes below 00:00:00.
 cTimestamp cTimestamp::AddSeconds(int iSeconds)
 {
-    int iTotalSeconds = this->iHour * 3600 + this->iMinute * 60 + this->iSecond + iSeconds;
+    int iTotalSeconds = this->m_iHour * 3600 + this->m_iMinute * 60 + this->m_iSecond + iSeconds;
 
     int iNewHour = iTotalSeconds / 3600;
     int iNewMinute = (iTotalSeconds % 3600) / 60;
@@ -181,11 +182,11 @@ cTimestamp cTimestamp::AddSeconds(int iSeconds)
 // below 00:00:00.
 cTimestamp cTimestamp::AddMinutes(int iMinutes)
 {
-    int iTotalMinutes = this->iHour * 60 + this->iMinute + iMinutes;
+    int iTotalMinutes = this->m_iHour * 60 + this->m_iMinute + iMinutes;
 
     int iNewHour = iTotalMinutes / 60;
     int iNewMinute = iTotalMinutes % 60;
-    int iNewSecond = this->iSecond;
+    int iNewSecond = this->m_iSecond;
 
     return cTimestamp(iNewHour, iNewMinute, iNewSecond);
 }
@@ -193,9 +194,9 @@ cTimestamp cTimestamp::AddMinutes(int iMinutes)
 // AddHours adds the given hours to the timestamp.
 cTimestamp cTimestamp::AddHours(int iHours)
 {
-    int iNewHour = this->iHour + iHours;
-    int iNewMinute = this->iMinute;
-    int iNewSecond = this->iSecond;
+    int iNewHour = this->m_iHour + iHours;
+    int iNewMinute = this->m_iMinute;
+    int iNewSecond = this->m_iSecond;
 
     return cTimestamp(iNewHour, iNewMinute, iNewSecond);
 }
@@ -204,7 +205,7 @@ cTimestamp cTimestamp::AddHours(int iHours)
 cTimestamp cTimestamp::AddTime(cTimestamp ts)
 {
     int iTotalSeconds =
-        this->iHour * 3600 + this->iMinute * 60 + this->iSecond + ts.iHour * 3600 + ts.iMinute * 60 + ts.iSecond;
+        this->m_iHour * 3600 + this->m_iMinute * 60 + this->m_iSecond + ts.m_iHour * 3600 + ts.m_iMinute * 60 + ts.m_iSecond;
     int iSecondsInDay = 24 * 3600;
     iTotalSeconds = ((iTotalSeconds % iSecondsInDay) + iSecondsInDay) % iSecondsInDay;
 

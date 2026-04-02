@@ -19,8 +19,8 @@ using namespace std;
 class cDiem
 {
 private:
-    float fHoanhDo;
-    float fTungDo;
+    float m_fHoanhDo;
+    float m_fTungDo;
 
 public:
     cDiem();

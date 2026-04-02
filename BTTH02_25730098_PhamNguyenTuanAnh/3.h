@@ -20,8 +20,8 @@ using namespace std;
 class cComplexNumber
 {
 private:
-    float fReal;
-    float fImaginary;
+    float m_fReal;
+    float m_fImaginary;
 
     string ToString();
 

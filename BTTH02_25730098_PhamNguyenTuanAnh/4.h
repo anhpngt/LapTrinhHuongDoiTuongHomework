@@ -18,9 +18,9 @@ using namespace std;
 class cTimestamp
 {
 private:
-    int iHour;
-    int iMinute;
-    int iSecond;
+    int m_iHour;
+    int m_iMinute;
+    int m_iSecond;
 
     bool IsValid();
 

@@ -29,10 +29,10 @@ using namespace std;
 class cVehicle
 {
 private:
-    string sOwner;
-    string sType;
-    int iPrice;
-    int iEngineDisplacement;
+    string m_sOwner;
+    string m_sType;
+    int m_iPrice;
+    int m_iEngineDisplacement;
 
 public:
     cVehicle();

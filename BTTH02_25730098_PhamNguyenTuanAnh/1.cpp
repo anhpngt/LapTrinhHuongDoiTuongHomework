@@ -33,8 +33,8 @@ int main()
 // RutGon reduces the fraction to its simplest form.
 void cPhanSo::RutGon()
 {
-    int a = abs(this->iTuSo);
-    int b = abs(this->iMauSo);
+    int a = abs(this->m_iTuSo);
+    int b = abs(this->m_iMauSo);
 
     while (b != 0)
     {
@@ -43,13 +43,13 @@ void cPhanSo::RutGon()
         a = temp;
     }
 
-    this->iTuSo /= a;
-    this->iMauSo /= a;
+    this->m_iTuSo /= a;
+    this->m_iMauSo /= a;
 
-    if (this->iMauSo < 0)
+    if (this->m_iMauSo < 0)
     {
-        this->iTuSo *= -1;
-        this->iMauSo *= -1;
+        this->m_iTuSo *= -1;
+        this->m_iMauSo *= -1;
     }
 }
 
@@ -67,8 +67,8 @@ cPhanSo::cPhanSo(int iTuSo, int iMauSo)
         throw std::invalid_argument("Mau so khong duoc bang 0");
     }
 
-    this->iTuSo = iTuSo;
-    this->iMauSo = iMauSo;
+    this->m_iTuSo = iTuSo;
+    this->m_iMauSo = iMauSo;
     RutGon();
 }
 
@@ -80,8 +80,8 @@ void cPhanSo::DinhGiaTri(int iTuSo, int iMauSo)
         throw std::invalid_argument("Mau so khong duoc bang 0");
     }
 
-    this->iTuSo = iTuSo;
-    this->iMauSo = iMauSo;
+    this->m_iTuSo = iTuSo;
+    this->m_iMauSo = iMauSo;
     RutGon();
 }
 
@@ -104,15 +104,15 @@ cPhanSo cPhanSo::NhapTuConsole()
 // "numerator/denominator".
 string cPhanSo::ToString()
 {
-    return to_string(this->iTuSo) + "/" + to_string(this->iMauSo);
+    return to_string(this->m_iTuSo) + "/" + to_string(this->m_iMauSo);
 }
 
 // Cong adds the current fraction with another fraction and returns the result
 // as a new cPhanSo object.
 cPhanSo cPhanSo::Cong(cPhanSo other)
 {
-    int iTuSo = this->iTuSo * other.iMauSo + other.iTuSo * this->iMauSo;
-    int iMauSo = this->iMauSo * other.iMauSo;
+    int iTuSo = this->m_iTuSo * other.m_iMauSo + other.m_iTuSo * this->m_iMauSo;
+    int iMauSo = this->m_iMauSo * other.m_iMauSo;
 
     return cPhanSo(iTuSo, iMauSo);
 }
@@ -121,8 +121,8 @@ cPhanSo cPhanSo::Cong(cPhanSo other)
 // result as a new cPhanSo object.
 cPhanSo cPhanSo::Tru(cPhanSo other)
 {
-    int iTuSo = this->iTuSo * other.iMauSo - other.iTuSo * this->iMauSo;
-    int iMauSo = this->iMauSo * other.iMauSo;
+    int iTuSo = this->m_iTuSo * other.m_iMauSo - other.m_iTuSo * this->m_iMauSo;
+    int iMauSo = this->m_iMauSo * other.m_iMauSo;
 
     return cPhanSo(iTuSo, iMauSo);
 }
@@ -131,8 +131,8 @@ cPhanSo cPhanSo::Tru(cPhanSo other)
 // result as a new cPhanSo object.
 cPhanSo cPhanSo::Nhan(cPhanSo other)
 {
-    int iTuSo = this->iTuSo * other.iTuSo;
-    int iMauSo = this->iMauSo * other.iMauSo;
+    int iTuSo = this->m_iTuSo * other.m_iTuSo;
+    int iMauSo = this->m_iMauSo * other.m_iMauSo;
 
     return cPhanSo(iTuSo, iMauSo);
 }
@@ -141,13 +141,13 @@ cPhanSo cPhanSo::Nhan(cPhanSo other)
 // as a new cPhanSo object.
 cPhanSo cPhanSo::Chia(cPhanSo other)
 {
-    if (other.iTuSo == 0)
+    if (other.m_iTuSo == 0)
     {
         throw std::invalid_argument("Khong the chia cho phan so co tu so bang 0");
     }
 
-    int iTuSo = this->iTuSo * other.iMauSo;
-    int iMauSo = this->iMauSo * other.iTuSo;
+    int iTuSo = this->m_iTuSo * other.m_iMauSo;
+    int iMauSo = this->m_iMauSo * other.m_iTuSo;
 
     return cPhanSo(iTuSo, iMauSo);
 }

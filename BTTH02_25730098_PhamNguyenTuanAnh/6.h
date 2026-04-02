@@ -18,8 +18,8 @@ using namespace std;
 class cString
 {
 private:
-    char *pData;
-    int iLength;
+    char *m_pData;
+    int m_iLength;
 
 public:
     cString();

@@ -19,9 +19,9 @@ using namespace std;
 class cDate
 {
 private:
-    int iDay;
-    int iMonth;
-    int iYear;
+    int m_iDay;
+    int m_iMonth;
+    int m_iYear;
 
     bool IsValid();
     int DaysInMonth();

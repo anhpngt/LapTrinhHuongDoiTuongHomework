@@ -52,8 +52,8 @@ cDiem::cDiem() : cDiem(0.0f, 0.0f) {}
 // coordinates.
 cDiem::cDiem(float fHoanhDo, float fTungDo)
 {
-    this->fHoanhDo = fHoanhDo;
-    this->fTungDo = fTungDo;
+    this->m_fHoanhDo = fHoanhDo;
+    this->m_fTungDo = fTungDo;
 }
 
 // NhapTuConsole prompts the user to input the x and y coordinates, and returns
@@ -71,6 +71,7 @@ cDiem cDiem::NhapTuConsole()
     return cDiem(fHoanhDo, fTungDo);
 }
 
+// XuatRaConsole outputs the point to the console.
 void cDiem::XuatRaConsole()
 {
     cout << this->ToString() << endl;
@@ -79,37 +80,37 @@ void cDiem::XuatRaConsole()
 // ToString returns a string representation of the point in the format "(x, y)".
 string cDiem::ToString()
 {
-    return "(" + to_string(this->fHoanhDo) + ", " + to_string(this->fTungDo) + ")";
+    return "(" + to_string(this->m_fHoanhDo) + ", " + to_string(this->m_fTungDo) + ")";
 }
 
 // Sets the x-coordinate of the point.
 void cDiem::setHoanhDo(float fHoanhDo)
 {
-    this->fHoanhDo = fHoanhDo;
+    this->m_fHoanhDo = fHoanhDo;
 }
 
 // Sets the y-coordinate of the point.
 void cDiem::setTungDo(float fTungDo)
 {
-    this->fTungDo = fTungDo;
+    this->m_fTungDo = fTungDo;
 }
 
 // Returns the x-coordinate of the point.
 float cDiem::getHoanhDo()
 {
-    return this->fHoanhDo;
+    return this->m_fHoanhDo;
 }
 
 // Returns the y-coordinate of the point.
 float cDiem::getTungDo()
 {
-    return this->fTungDo;
+    return this->m_fTungDo;
 }
 
 // Translates the point by adding the given delta x and delta y to the current
 // coordinates.
 void cDiem::tinhTien(float fDeltaX, float fDeltaY)
 {
-    this->fHoanhDo += fDeltaX;
-    this->fTungDo += fDeltaY;
+    this->m_fHoanhDo += fDeltaX;
+    this->m_fTungDo += fDeltaY;
 }

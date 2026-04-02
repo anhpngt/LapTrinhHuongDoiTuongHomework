@@ -31,57 +31,63 @@ int main()
     return 0;
 }
 
+// Default constructor initializes an empty string.
 cString::cString()
 {
-    this->iLength = 0;
-    this->pData = nullptr;
+    this->m_iLength = 0;
+    this->m_pData = nullptr;
 }
 
+// Parameterized constructor initializes the string from a std::string.
 cString::cString(string sString)
 {
-    this->iLength = sString.length();
-    this->pData = new char[this->iLength + 1];
-    strcpy(this->pData, sString.c_str());
+    this->m_iLength = sString.length();
+    this->m_pData = new char[this->m_iLength + 1];
+    strcpy(this->m_pData, sString.c_str());
 }
 
+// Copy constructor creates a deep copy of another cString.
 cString::cString(const cString &sOther)
 {
-    this->iLength = sOther.iLength;
-    if (sOther.pData != nullptr)
+    this->m_iLength = sOther.m_iLength;
+    if (sOther.m_pData != nullptr)
     {
-        this->pData = new char[this->iLength + 1];
-        strcpy(this->pData, sOther.pData);
+        this->m_pData = new char[this->m_iLength + 1];
+        strcpy(this->m_pData, sOther.m_pData);
     }
     else
     {
-        this->pData = nullptr;
+        this->m_pData = nullptr;
     }
 }
 
+// Copy assignment operator creates a deep copy of another cString.
 cString &cString::operator=(const cString &sOther)
 {
     if (this != &sOther)
     {
-        delete[] this->pData;
-        this->iLength = sOther.iLength;
-        if (sOther.pData != nullptr)
+        delete[] this->m_pData;
+        this->m_iLength = sOther.m_iLength;
+        if (sOther.m_pData != nullptr)
         {
-            this->pData = new char[this->iLength + 1];
-            strcpy(this->pData, sOther.pData);
+            this->m_pData = new char[this->m_iLength + 1];
+            strcpy(this->m_pData, sOther.m_pData);
         }
         else
         {
-            this->pData = nullptr;
+            this->m_pData = nullptr;
         }
     }
     return *this;
 }
 
+// Destructor frees the allocated memory.
 cString::~cString()
 {
-    delete[] this->pData;
+    delete[] this->m_pData;
 }
 
+// InputFromConsole prompts the user to input a string from the console.
 cString cString::InputFromConsole()
 {
     string sNhap;
@@ -90,74 +96,81 @@ cString cString::InputFromConsole()
     return cString(sNhap);
 }
 
+// OutputToConsole outputs the string to the console.
 void cString::OutputToConsole()
 {
     cout << this->ToString() << endl;
 }
 
+// ToString returns the string as a std::string.
 string cString::ToString()
 {
-    if (this->pData == nullptr)
+    if (this->m_pData == nullptr)
         return "";
-    return string(this->pData);
+    return string(this->m_pData);
 }
 
+// Length returns the length of the string.
 int cString::Length()
 {
-    return this->iLength;
+    return this->m_iLength;
 }
 
+// ToUpper returns a new cString with all characters converted to uppercase.
 cString cString::ToUpper()
 {
     cString sUpper = cString();
-    sUpper.iLength = this->iLength;
-    sUpper.pData = new char[this->iLength + 1];
-    for (int i = 0; i < sUpper.iLength; i++) // or we could've used toupper()
+    sUpper.m_iLength = this->m_iLength;
+    sUpper.m_pData = new char[this->m_iLength + 1];
+    for (int i = 0; i < sUpper.m_iLength; i++) // or we could've used toupper()
     {
-        if (this->pData[i] >= 'a' && this->pData[i] <= 'z')
-            sUpper.pData[i] = (this->pData[i] - 32);
+        if (this->m_pData[i] >= 'a' && this->m_pData[i] <= 'z')
+            sUpper.m_pData[i] = (this->m_pData[i] - 32);
         else
-            sUpper.pData[i] = this->pData[i];
+            sUpper.m_pData[i] = this->m_pData[i];
     }
-    sUpper.pData[sUpper.iLength] = '\0';
+    sUpper.m_pData[sUpper.m_iLength] = '\0';
     return sUpper;
 }
 
+// ToLower returns a new cString with all characters converted to lowercase.
 cString cString::ToLower()
 {
     cString sLower = cString();
-    sLower.iLength = this->iLength;
-    sLower.pData = new char[this->iLength + 1];
-    for (int i = 0; i < sLower.iLength; i++)
+    sLower.m_iLength = this->m_iLength;
+    sLower.m_pData = new char[this->m_iLength + 1];
+    for (int i = 0; i < sLower.m_iLength; i++)
     {
-        if (this->pData[i] >= 'A' && this->pData[i] <= 'Z')
-            sLower.pData[i] = (this->pData[i] + 32);
+        if (this->m_pData[i] >= 'A' && this->m_pData[i] <= 'Z')
+            sLower.m_pData[i] = (this->m_pData[i] + 32);
         else
-            sLower.pData[i] = this->pData[i];
+            sLower.m_pData[i] = this->m_pData[i];
     }
-    sLower.pData[sLower.iLength] = '\0';
+    sLower.m_pData[sLower.m_iLength] = '\0';
     return sLower;
 }
 
+// Concat returns a new cString by concatenating another cString to this one.
 cString cString::Concat(cString sOther)
 {
     cString sCombined = cString();
-    sCombined.iLength = this->iLength + sOther.iLength;
-    sCombined.pData = new char[sCombined.iLength + 1];
-    strcpy(sCombined.pData, this->pData);
-    strcpy(sCombined.pData + iLength, sOther.pData);
+    sCombined.m_iLength = this->m_iLength + sOther.m_iLength;
+    sCombined.m_pData = new char[sCombined.m_iLength + 1];
+    strcpy(sCombined.m_pData, this->m_pData);
+    strcpy(sCombined.m_pData + m_iLength, sOther.m_pData);
     return sCombined;
 }
 
+// Reversed returns a new cString with the characters in reverse order.
 cString cString::Reversed()
 {
     cString sReversed = cString();
-    sReversed.iLength = this->iLength;
-    sReversed.pData = new char[sReversed.iLength + 1];
-    for (int i = 0; i < this->iLength; i++)
+    sReversed.m_iLength = this->m_iLength;
+    sReversed.m_pData = new char[sReversed.m_iLength + 1];
+    for (int i = 0; i < this->m_iLength; i++)
     {
-        sReversed.pData[this->iLength - 1 - i] = this->pData[i];
+        sReversed.m_pData[this->m_iLength - 1 - i] = this->m_pData[i];
     }
-    sReversed.pData[this->iLength] = '\0';
+    sReversed.m_pData[this->m_iLength] = '\0';
     return sReversed;
 }

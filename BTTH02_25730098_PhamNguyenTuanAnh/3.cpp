@@ -45,8 +45,8 @@ cComplexNumber::cComplexNumber() : cComplexNumber(0.0f, 0.0f) {}
 // Initialize the complex number with the given real and imaginary parts.
 cComplexNumber::cComplexNumber(float fReal, float fImaginary)
 {
-    this->fReal = fReal;
-    this->fImaginary = fImaginary;
+    this->m_fReal = fReal;
+    this->m_fImaginary = fImaginary;
 }
 
 // Static method to input a complex number from the console.
@@ -66,7 +66,7 @@ cComplexNumber cComplexNumber::InputFromConsole()
 // imaginary)".
 string cComplexNumber::ToString()
 {
-    return "(" + to_string(fReal) + ", " + to_string(fImaginary) + ")";
+    return "(" + to_string(m_fReal) + ", " + to_string(m_fImaginary) + ")";
 }
 
 // Output the complex number to the console.
@@ -78,46 +78,46 @@ void cComplexNumber::OutputToConsole()
 // Set the real part of the complex number.
 void cComplexNumber::setReal(float fReal)
 {
-    this->fReal = fReal;
+    this->m_fReal = fReal;
 }
 
 // Set the imaginary part of the complex number.
 void cComplexNumber::setImaginary(float fImaginary)
 {
-    this->fImaginary = fImaginary;
+    this->m_fImaginary = fImaginary;
 }
 
 // Get the real part of the complex number.
 float cComplexNumber::getReal()
 {
-    return fReal;
+    return m_fReal;
 }
 
 // Get the imaginary part of the complex number.
 float cComplexNumber::getImaginary()
 {
-    return fImaginary;
+    return m_fImaginary;
 }
 
 // Adds two complex numbers and returns the result as a new complex number.
 cComplexNumber cComplexNumber::Add(cComplexNumber cOther)
 {
-    return cComplexNumber(fReal + cOther.fReal, fImaginary + cOther.fImaginary);
+    return cComplexNumber(m_fReal + cOther.m_fReal, m_fImaginary + cOther.m_fImaginary);
 }
 
 // Subtracts another complex number from this complex number and returns the
 // result as a new complex number.
 cComplexNumber cComplexNumber::Subtract(cComplexNumber cOther)
 {
-    return cComplexNumber(fReal - cOther.fReal, fImaginary - cOther.fImaginary);
+    return cComplexNumber(m_fReal - cOther.m_fReal, m_fImaginary - cOther.m_fImaginary);
 }
 
 // Multiplies this complex number by another complex number and returns the
 // result as a new complex number.
 cComplexNumber cComplexNumber::Multiply(cComplexNumber cOther)
 {
-    float realPart = fReal * cOther.fReal - fImaginary * cOther.fImaginary;
-    float imaginaryPart = fReal * cOther.fImaginary + fImaginary * cOther.fReal;
+    float realPart = m_fReal * cOther.m_fReal - m_fImaginary * cOther.m_fImaginary;
+    float imaginaryPart = m_fReal * cOther.m_fImaginary + m_fImaginary * cOther.m_fReal;
     return cComplexNumber(realPart, imaginaryPart);
 }
 
@@ -125,12 +125,12 @@ cComplexNumber cComplexNumber::Multiply(cComplexNumber cOther)
 // as a new complex number.
 cComplexNumber cComplexNumber::Divide(cComplexNumber cOther)
 {
-    float denominator = cOther.fReal * cOther.fReal + cOther.fImaginary * cOther.fImaginary;
+    float denominator = cOther.m_fReal * cOther.m_fReal + cOther.m_fImaginary * cOther.m_fImaginary;
     if (denominator == 0)
     {
         throw std::invalid_argument("Khong the chia cho so phuc bang 0");
     }
-    float realPart = (fReal * cOther.fReal + fImaginary * cOther.fImaginary) / denominator;
-    float imaginaryPart = (fImaginary * cOther.fReal - fReal * cOther.fImaginary) / denominator;
+    float realPart = (m_fReal * cOther.m_fReal + m_fImaginary * cOther.m_fImaginary) / denominator;
+    float imaginaryPart = (m_fImaginary * cOther.m_fReal - m_fReal * cOther.m_fImaginary) / denominator;
     return cComplexNumber(realPart, imaginaryPart);
 }

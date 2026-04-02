@@ -34,14 +34,16 @@ int main()
     cout << "Bang ke khai thong tin xe 3:\n" << v3.GetAllDetails() << endl;
 }
 
+// Default constructor initializes all fields to empty/zero values.
 cVehicle::cVehicle()
 {
-    this->sOwner = "";
-    this->sType = "";
-    this->iPrice = 0;
-    this->iEngineDisplacement = 0;
+    this->m_sOwner = "";
+    this->m_sType = "";
+    this->m_iPrice = 0;
+    this->m_iEngineDisplacement = 0;
 }
 
+// Parameterized constructor initializes the vehicle with the given values.
 cVehicle::cVehicle(string sOwner, string sType, int iPrice, int iEngineDisplacement)
 {
     this->SetOwner(sOwner);
@@ -50,6 +52,7 @@ cVehicle::cVehicle(string sOwner, string sType, int iPrice, int iEngineDisplacem
     this->SetEngineDisplacement(iEngineDisplacement);
 }
 
+// InputFromConsole prompts the user to input vehicle data from the console.
 cVehicle cVehicle::InputFromConsole()
 {
     string sOwner;
@@ -71,69 +74,80 @@ cVehicle cVehicle::InputFromConsole()
     return cVehicle(sOwner, sType, iPrice, iEngineDisplacement);
 }
 
+// GetOwner returns the owner of the vehicle.
 string cVehicle::GetOwner()
 {
-    return this->sOwner;
+    return this->m_sOwner;
 }
 
+// GetType returns the type of the vehicle.
 string cVehicle::GetType()
 {
-    return this->sType;
+    return this->m_sType;
 }
 
+// GetPrice returns the price of the vehicle.
 int cVehicle::GetPrice()
 {
-    return this->iPrice;
+    return this->m_iPrice;
 }
 
+// GetEngineDisplacement returns the engine displacement of the vehicle.
 int cVehicle::GetEngineDisplacement()
 {
-    return this->iEngineDisplacement;
+    return this->m_iEngineDisplacement;
 }
 
+// SetOwner sets the owner of the vehicle.
 void cVehicle::SetOwner(string sOwner)
 {
-    this->sOwner = sOwner;
+    this->m_sOwner = sOwner;
 }
 
+// SetType sets the type of the vehicle.
 void cVehicle::SetType(string sType)
 {
-    this->sType = sType;
+    this->m_sType = sType;
 }
 
+// SetPrice sets the price of the vehicle. Throws if price is negative.
 void cVehicle::SetPrice(int iPrice)
 {
     if (iPrice < 0)
         throw invalid_argument("Tri gia xe khong duoc nho hon 0.");
-    this->iPrice = iPrice;
+    this->m_iPrice = iPrice;
 }
 
+// SetEngineDisplacement sets the engine displacement. Throws if negative.
 void cVehicle::SetEngineDisplacement(int iEngineDisplacement)
 {
     if (iEngineDisplacement < 0)
         throw invalid_argument("Dung tich xylanh khong duoc nho hon 0.");
-    this->iEngineDisplacement = iEngineDisplacement;
+    this->m_iEngineDisplacement = iEngineDisplacement;
 }
 
+// GetRegistrationTax calculates the registration tax based on engine
+// displacement: <100cc = 1%, 100-200cc = 3%, >200cc = 5% of the price.
 int cVehicle::GetRegistrationTax()
 {
-    if (this->iEngineDisplacement < 100)
+    if (this->m_iEngineDisplacement < 100)
     {
-        return this->iPrice * 0.01;
+        return this->m_iPrice * 0.01;
     }
 
-    if (this->iEngineDisplacement <= 200)
+    if (this->m_iEngineDisplacement <= 200)
     {
-        return this->iPrice * 0.03;
+        return this->m_iPrice * 0.03;
     }
 
-    return this->iPrice * 0.05;
+    return this->m_iPrice * 0.05;
 }
 
+// GetAllDetails returns a formatted string with all vehicle details and tax.
 string cVehicle::GetAllDetails()
 {
-    return "\tChu xe: " + this->sOwner + "\n" + "\tLoai xe: " + this->sType + "\n" +
-           "\tTri gia xe: " + to_string(this->iPrice) + "\n" +
-           "\tDung tich xylanh: " + to_string(this->iEngineDisplacement) + "cc\n" +
+    return "\tChu xe: " + this->m_sOwner + "\n" + "\tLoai xe: " + this->m_sType + "\n" +
+           "\tTri gia xe: " + to_string(this->m_iPrice) + "\n" +
+           "\tDung tich xylanh: " + to_string(this->m_iEngineDisplacement) + "cc\n" +
            "\tThue truoc ba: " + to_string(this->GetRegistrationTax()) + "\n";
 }

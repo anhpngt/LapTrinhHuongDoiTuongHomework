@@ -67,17 +67,17 @@ int main()
 // year).
 cDate::cDate()
 {
-    this->iDay = 1;
-    this->iMonth = 1;
-    this->iYear = 1;
+    this->m_iDay = 1;
+    this->m_iMonth = 1;
+    this->m_iYear = 1;
 }
 
 // Initialize the date with the given day, month, and year.
 cDate::cDate(int iDay, int iMonth, int iYear)
 {
-    this->iDay = iDay;
-    this->iMonth = iMonth;
-    this->iYear = iYear;
+    this->m_iDay = iDay;
+    this->m_iMonth = iMonth;
+    this->m_iYear = iYear;
     if (!this->IsValid())
     {
         throw invalid_argument("Ngay thang nam khong hop le: " + this->ToString());
@@ -89,10 +89,10 @@ cDate::cDate(int iDay, int iMonth, int iYear)
 // For reference, see: https://en.wikipedia.org/wiki/Gregorian_calendar
 bool cDate::IsValid()
 {
-    if (this->iYear < 1)
+    if (this->m_iYear < 1)
         return false;
 
-    switch (this->iMonth)
+    switch (this->m_iMonth)
     {
     case 1:
     case 3:
@@ -101,25 +101,25 @@ bool cDate::IsValid()
     case 8:
     case 10:
     case 12:
-        if (this->iDay < 1 || this->iDay > 31)
+        if (this->m_iDay < 1 || this->m_iDay > 31)
             return false;
         break;
     case 4:
     case 6:
     case 9:
     case 11:
-        if (this->iDay < 1 || this->iDay > 30)
+        if (this->m_iDay < 1 || this->m_iDay > 30)
             return false;
         break;
     case 2:
-        if (this->iYear % 4 == 0 && (this->iYear % 100 != 0 || this->iYear % 400 == 0))
+        if (this->m_iYear % 4 == 0 && (this->m_iYear % 100 != 0 || this->m_iYear % 400 == 0))
         {
-            if (this->iDay < 1 || this->iDay > 29)
+            if (this->m_iDay < 1 || this->m_iDay > 29)
                 return false;
         }
         else
         {
-            if (this->iDay < 1 || this->iDay > 28)
+            if (this->m_iDay < 1 || this->m_iDay > 28)
                 return false;
         }
         break;
@@ -141,7 +141,7 @@ cDate cDate::InputFromConsole()
 // ToString converts the date to a string in the format of dd/mm/yyyy.
 string cDate::ToString()
 {
-    return to_string(this->iDay) + "/" + to_string(this->iMonth) + "/" + to_string(this->iYear);
+    return to_string(this->m_iDay) + "/" + to_string(this->m_iMonth) + "/" + to_string(this->m_iYear);
 }
 
 // OutputToConsole outputs the date to the console.
@@ -153,11 +153,11 @@ void cDate::OutputToConsole()
 // SetDay sets the day of the date.
 void cDate::SetDay(int iDay)
 {
-    int iOldDay = this->iDay;
-    this->iDay = iDay;
+    int iOldDay = this->m_iDay;
+    this->m_iDay = iDay;
     if (!this->IsValid())
     {
-        this->iDay = iOldDay;
+        this->m_iDay = iOldDay;
         throw invalid_argument("Ngay khong hop le: " + to_string(iDay));
     }
 }
@@ -165,11 +165,11 @@ void cDate::SetDay(int iDay)
 // SetMonth sets the month of the date.
 void cDate::SetMonth(int iMonth)
 {
-    int iOldMonth = this->iMonth;
-    this->iMonth = iMonth;
+    int iOldMonth = this->m_iMonth;
+    this->m_iMonth = iMonth;
     if (!this->IsValid())
     {
-        this->iMonth = iOldMonth;
+        this->m_iMonth = iOldMonth;
         throw invalid_argument("Thang khong hop le: " + to_string(iMonth));
     }
 }
@@ -177,11 +177,11 @@ void cDate::SetMonth(int iMonth)
 // SetYear sets the year of the date.
 void cDate::SetYear(int iYear)
 {
-    int iOldYear = this->iYear;
-    this->iYear = iYear;
+    int iOldYear = this->m_iYear;
+    this->m_iYear = iYear;
     if (!this->IsValid())
     {
-        this->iYear = iOldYear;
+        this->m_iYear = iOldYear;
         throw invalid_argument("Nam khong hop le: " + to_string(iYear));
     }
 }
@@ -189,86 +189,86 @@ void cDate::SetYear(int iYear)
 // GetDay gets the day of the date.
 int cDate::GetDay()
 {
-    return this->iDay;
+    return this->m_iDay;
 }
 
 // GetMonth gets the month of the date.
 int cDate::GetMonth()
 {
-    return this->iMonth;
+    return this->m_iMonth;
 }
 
 // GetYear gets the year of the date.
 int cDate::GetYear()
 {
-    return this->iYear;
+    return this->m_iYear;
 }
 
 // DaysInMonth returns the number of days in the current month.
 int cDate::DaysInMonth()
 {
     int days[] = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
-    if (iMonth == 2 && IsLeapYear())
+    if (m_iMonth == 2 && IsLeapYear())
         return 29;
-    return days[iMonth];
+    return days[m_iMonth];
 }
 
 // AddDays adds the given days to the date.
 void cDate::AddDays(int iDays)
 {
-    iDay += iDays;
-    while (iDay > DaysInMonth())
+    m_iDay += iDays;
+    while (m_iDay > DaysInMonth())
     {
-        iDay -= DaysInMonth();
-        if (++iMonth > 12)
+        m_iDay -= DaysInMonth();
+        if (++m_iMonth > 12)
         {
-            iMonth = 1;
-            iYear++;
+            m_iMonth = 1;
+            m_iYear++;
         }
     }
-    while (iDay < 1)
+    while (m_iDay < 1)
     {
-        if (--iMonth < 1)
+        if (--m_iMonth < 1)
         {
-            iMonth = 12;
-            iYear--;
+            m_iMonth = 12;
+            m_iYear--;
         }
-        iDay += DaysInMonth();
+        m_iDay += DaysInMonth();
     }
 }
 
 // AddMonths adds the given months to the date.
 void cDate::AddMonths(int iMonths)
 {
-    iMonth += iMonths;
-    while (iMonth > 12)
+    m_iMonth += iMonths;
+    while (m_iMonth > 12)
     {
-        iMonth -= 12;
-        iYear++;
+        m_iMonth -= 12;
+        m_iYear++;
     }
-    while (iMonth < 1)
+    while (m_iMonth < 1)
     {
-        iMonth += 12;
-        iYear--;
+        m_iMonth += 12;
+        m_iYear--;
     }
-    if (iDay > DaysInMonth())
-        iDay = DaysInMonth();
+    if (m_iDay > DaysInMonth())
+        m_iDay = DaysInMonth();
 }
 
 // AddYears adds the given years to the date.
 void cDate::AddYears(int iYears)
 {
-    iYear += iYears;
-    if (iDay > DaysInMonth())
-        iDay = DaysInMonth();
+    m_iYear += iYears;
+    if (m_iDay > DaysInMonth())
+        m_iDay = DaysInMonth();
 }
 
 // AddDate adds another date's day/month/year values to this date.
 void cDate::AddDate(cDate date)
 {
-    AddYears(date.iYear);
-    AddMonths(date.iMonth);
-    AddDays(date.iDay);
+    AddYears(date.m_iYear);
+    AddMonths(date.m_iMonth);
+    AddDays(date.m_iDay);
 }
 
 // GetDateOfWeek returns the day of the week for the current date.
@@ -276,13 +276,13 @@ void cDate::AddDate(cDate date)
 // For reference, see: https://en.wikipedia.org/wiki/Zeller%27s_congruence
 int cDate::GetDateOfWeek()
 {
-    int m = iMonth, y = iYear;
+    int m = m_iMonth, y = m_iYear;
     if (m < 3)
     {
         m += 12;
         y--;
     }
-    int iDayOfWeek = (iDay + 2 * m + 3 * (m + 1) / 5 + y + y / 4 - y / 100 + y / 400) % 7;
+    int iDayOfWeek = (m_iDay + 2 * m + 3 * (m + 1) / 5 + y + y / 4 - y / 100 + y / 400) % 7;
     return iDayOfWeek;
 }
 
@@ -291,5 +291,5 @@ int cDate::GetDateOfWeek()
 // For reference, see: https://en.wikipedia.org/wiki/Leap_year
 bool cDate::IsLeapYear()
 {
-    return (this->iYear % 4 == 0 && (this->iYear % 100 != 0 || this->iYear % 400 == 0));
+    return (this->m_iYear % 4 == 0 && (this->m_iYear % 100 != 0 || this->m_iYear % 400 == 0));
 }
